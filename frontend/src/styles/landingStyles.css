@@ -41,6 +41,7 @@ header{
 .header__logo1{
     height: 100%;
     width: 100%;
+    object-fit: cover;
 }
 
 .header__profile-button{
@@ -65,7 +66,7 @@ header{
     top: 86px;
     padding: 8px 25px;
     border-radius: 14px;
-    display: none;
+    /* display: none; */
 }
 
 .header__user-list{
