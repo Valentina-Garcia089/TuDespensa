@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
 }
 
 :root {
@@ -12,6 +13,8 @@
     --mainTextColor: #212121;
     --darkblueText: #001223;
     --blankColor: #D9D9D9; /* Color usado en opciones del landing y espacios del Log In y del Sign Up*/
+
+    font-size: 16px;
 }
 
 body{
@@ -19,11 +22,10 @@ body{
 }
 
 
-
 /* HEADER SECTION */
 
 header{
-    height: 13dvh;
+    height: 80px; /*Ajustar con media queries (MEJOR VALOR FIJO A DEPENDIENTE)*/
     display: flex;
     padding: 2px 18px;
     flex-direction: row;
@@ -33,15 +35,19 @@ header{
 }
 
 .header__logo1-container{
-    max-width: 100%;
-    height: 100%;
-    width: 20dvw;
+    display: flex;
+    align-items: center;
 }
 
 .header__logo1{
     height: 100%;
-    width: 100%;
+    width: clamp(140px, 22%, 230px); /*Asegurarse de que ocupe el contenedor*/
     object-fit: cover;
+}
+
+.header__right-section{
+    display: flex;
+    flex-direction: row;
 }
 
 .header__profile-button{
@@ -49,14 +55,17 @@ header{
     cursor: pointer; /*El cursor cambia a manito cuando paso por el profile*/
     border: none;
     border-radius: 50%;
-    height: 50px;
-    width: 50px;
+    width: 60px;
+    height: 60px;
+    /*Centrar el icono*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0; /*Ayuda a que no se aplaste*/
 }
 
 .header__profile-icon{
-    max-width: 100%;
-    max-height: 100px;
-    width: 7dvw;
+    width: 65%;
     padding: 4px;
 }
 
@@ -65,8 +74,8 @@ header{
     position: absolute;
     right: 20px;
     top: 86px;
-    padding: 8px 25px;
-    border-radius: 14px;
+    padding: 10px 27px;
+    border-radius: 12px;
     display: none;
 }
 
@@ -82,9 +91,37 @@ header{
 
 .header__user-option{
     padding: 3px 0;
+    font-size: 0.9rem;
+    font-weight: 500;
 }
 
 .header__user-option a{
     color: var(--darkblueText);
     text-decoration: none;
+}
+
+.header__start-button{
+    font-size: 1rem;
+    font-weight: 600;
+    width: 190px;
+    height: 50px;
+    align-self: center;
+    margin: 0 20px 0 0;
+    border-radius: 12px;
+    border: none;
+    background-color: var(--mainButtonColor);
+    color: var(--mainTextColor);
+    cursor: pointer;
+    display: none;
+}
+
+/*------------HEADER QUERIES------------*/
+@media screen and (min-width: 600px) {
+    .header__user-menu{
+        padding: 13px 30px;
+    }
+
+    .header__start-button{
+        display: block;
+    }
 }
