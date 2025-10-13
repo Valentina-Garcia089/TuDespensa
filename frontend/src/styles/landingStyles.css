@@ -46,6 +46,7 @@ header{
 
 .header__profile-button{
     background-color: var(--blankColor);
+    cursor: pointer; /*El cursor cambia a manito cuando paso por el profile*/
     border: none;
     border-radius: 50%;
     height: 50px;
@@ -66,7 +67,13 @@ header{
     top: 86px;
     padding: 8px 25px;
     border-radius: 14px;
-    /* display: none; */
+    display: none;
+}
+
+/* En este punto deberían mostrarse las opciones */
+
+.header__user-menu.show{
+    display: block;
 }
 
 .header__user-list{
