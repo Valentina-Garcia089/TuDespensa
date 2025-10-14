@@ -22,7 +22,7 @@ body{
 }
 
 
-/* HEADER SECTION */
+/* ----------------HEADER SECTION------------------- */
 
 header{
     height: 80px; /*Ajustar con media queries (MEJOR VALOR FIJO A DEPENDIENTE)*/
@@ -43,6 +43,8 @@ header{
     height: 100%;
     width: clamp(140px, 22%, 230px); /*Asegurarse de que ocupe el contenedor*/
     object-fit: cover;
+
+    filter: drop-shadow(3px 5px 2px #00000058);
 }
 
 .header__right-section{
@@ -70,19 +72,28 @@ header{
 }
 
 .header__user-menu{
-    background-color: #64b4f6ba;
+    background-color: #64b4f6bc;
+    backdrop-filter: blur(10px);
     position: absolute;
+    padding: 13px;
     right: 20px;
     top: 86px;
-    padding: 10px 27px;
     border-radius: 12px;
-    display: none;
+    /*display no se puede animar*/
+
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none; /*Hace que no se pueda clickear si no está visible*/
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* En este punto deberían mostrarse las opciones */
+/* VISIBLE PARA CELULARES */
 
 .header__user-menu.show{
-    display: block;
+
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
 .header__user-list{
@@ -90,9 +101,17 @@ header{
 }
 
 .header__user-option{
-    padding: 3px 0;
+    padding: 8px 12px;
     font-size: 0.9rem;
     font-weight: 500;
+    border-radius: 12px;
+
+    transition: background-color 0.1s cubic-bezier(.07,.35,.83,.67);
+}
+
+.header__user-option:active{
+    background-color: var(--mainColor);
+    border-radius: 12px;
 }
 
 .header__user-option a{
@@ -112,16 +131,162 @@ header{
     background-color: var(--mainButtonColor);
     color: var(--mainTextColor);
     cursor: pointer;
+    transition: box-shadow 0.25s ease, background-color 0.25s ease;
     display: none;
 }
 
 /*------------HEADER QUERIES------------*/
 @media screen and (min-width: 600px) {
+    .header__start-button:hover{
+        filter: drop-shadow(0px 0px px var(--mainButtonColor)); 
+        /*Para que sobresalga el color del botón*/
+        background-color: #ffa215;
+        box-shadow: 1px 1px 12px #ffa215;
+
+    }
+
+    .header__profile-button{
+        outline: none;
+        transition: outline 0.1s;
+    }
+
+    .header__profile-button:hover{
+        outline: 4px solid var(--darkblueText);
+    }
+
     .header__user-menu{
-        padding: 13px 30px;
+        padding: 13px 20px;
+    }
+
+    .header__user-option{
+        padding: 10px 25px;
+        border-radius: 12px;
+        transition: background-color 0.1s;
+    }
+
+    .header__user-option:hover{
+        background-color: var(--mainColor);
     }
 
     .header__start-button{
         display: block;
     }
 }
+
+
+
+
+/* ----------------MAIN SECTION------------------- */
+
+main{
+    max-width: 90%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    text-align: center;
+}
+
+h1{
+    padding: 65px 0 8px 0;
+}
+
+h3{
+    font-style: italic;
+    font-weight: 100;
+}
+
+.benefits__container{
+    margin: 80px 0 0 0;
+}
+
+h2{
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.benefits_item-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.benefits__item{
+    width: 340px;
+    background-color: var(--blankColor);
+    border-radius: 25px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.benefits__img-container{
+    width: 38px;
+    background-color: var(--mainColor);
+    padding: 7px;
+    border-radius: 50%;
+}
+
+.benefits__item p{
+    margin: 0 0 0 8px;
+    font-weight: 100;
+}
+
+.benefits__start-button{
+    font-size: 1rem;
+    font-weight: 600;
+    width: 190px;
+    height: 50px;
+    align-self: center;
+    margin: 24px 0 70px 0;
+    border-radius: 12px;
+    border: none;
+    background-color: var(--mainButtonColor);
+    color: var(--mainTextColor);
+    cursor: pointer;
+    text-shadow: 0 4px 5px #0000006e;
+    transition: box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.benefits__start-button:hover{
+        filter: drop-shadow(0px 0px px var(--mainButtonColor)); 
+        /*Para que sobresalga el color del botón*/
+        background-color: #ffa215;
+        box-shadow: 1px 1px 12px #ffa215;
+}
+
+
+/*------------MAIN QUERIES------------*/
+
+
+
+
+
+
+/* ----------------FOOTER SECTION------------------- */
+
+footer{
+    background-color: var(--headerColor);
+    display: flex;
+    flex-direction: column;
+}
+
+.footer__logo2-container{
+    /* margin: auto; */
+    margin: 15px auto 15px auto;
+    background-color: var(--mainColor);
+    border-radius: 14px;
+    padding: 0 20px;
+}
+
+.footer__options-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+
+/*------------FOOTER QUERIES------------*/
