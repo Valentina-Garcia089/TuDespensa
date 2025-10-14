@@ -232,9 +232,17 @@ h2{
 
 .benefits__img-container{
     width: 38px;
+    height: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: var(--mainColor);
     padding: 7px;
     border-radius: 50%;
+}
+
+.benefits__img-container img{
+    width: clamp(28px, 60%, 52px);
 }
 
 .benefits__item p{
@@ -267,7 +275,39 @@ h2{
 
 
 /*------------MAIN QUERIES------------*/
+@media screen and (min-width: 600px) {
+    .benefits_item-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        height: 300px;
 
+        margin: 27px 0;
+    }
+
+    .benefits__item{
+        width: 220px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding: 10px;
+        margin: 0 14px;
+        height: 80%;
+
+        transition: transform 0.3s, box-shadow 0.4s;
+    }
+
+    .benefits__item:hover{
+        transform: perspective(1500px) rotateX(-12deg) rotateY(-10deg);
+
+        box-shadow: 3px 1px 10px var(--darkblueText);
+    }
+
+    .benefits__img-container{
+        width: 90px;
+        height: 90px;
+    }
+}
 
 
 
