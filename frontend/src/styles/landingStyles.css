@@ -146,6 +146,7 @@ header{
 /*------------HEADER QUERIES------------*/
 @media screen and (min-width: 600px) {
     .header__start-button:hover{
+        /*Color que rodea el recuadro*/
         filter: drop-shadow(0px 0px px var(--mainButtonColor)); 
         /*Para que sobresalga el color del botón*/
         background-color: #ffa215;

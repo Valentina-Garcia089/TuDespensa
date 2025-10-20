@@ -1,0 +1,43 @@
+/* Cambios al archivo de estilos original del register */
+:root {
+    --headerColor: #64B5F6; /* Este color también se usa para botón*/
+    --mainColor: #F5F5F5;
+    --mainButtonColor: #FF9800;
+    --canceledButtonColor: #E57373;
+    --mainTextColor: #212121;
+    --darkblueText: #001223;
+    --blankColor: #D9D9D9; /* Color usado en opciones del landing y espacios del Log In y del Sign Up*/
+
+    font-size: 16px;
+}
+
+.logIn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.logIn__buttons-container{
+    justify-content: center;
+}
+
+.logIn__buttons{
+    background-color: var(--mainButtonColor);
+}
+
+button{
+    text-shadow: 1px 4px 4px #00000058;
+}
+
+
+/*------------MAIN QUERIES------------*/
+@media screen and (min-width: 820px) {
+    .logIn__buttons:hover{
+        /*Color que rodea el recuadro*/
+        filter: drop-shadow(0px 0px px var(--mainButtonColor)); 
+        /*Para que sobresalga el color del botón*/
+        background-color: #ffa215;
+        box-shadow: 1px 1px 12px #ffa215;
+    }
+}
