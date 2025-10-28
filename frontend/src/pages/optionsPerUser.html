@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido a TuDespensa</title>
+
+    <link rel="stylesheet" href="../styles/landingStyles.css">
+    <link rel="stylesheet" href="../styles/optionsUserStyles.css">
+
+    <!-- Tipografia -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <div class="header__logo1-container">
+            <img src="../../public/Logo1.png" alt="Logo #1 de la página" class="header__logo1">
+        </div>
+
+        <div class="header__right-section">
+
+            <button id="open-profile-options" class="header__profile-button">
+                <img src="../assets/user.png" alt="Abrir menú" class="header__profile-icon">
+            </button>
+
+            <nav class="header__user-menu">
+                <ul class="header__user-list">
+                    <li class="header__user-option">
+                        <a href="register.html">Configuración</a>
+                    </li>
+                    <li class="header__user-option">
+                        <a href="logIn.html">Cerrar Sesión</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1>👋Hola [Usuario]</h1>
+        <h3>¿Que quieres hacer hoy?</h3>
+
+        <section class="options__container">
+                <button class="options__button">
+                    <img src="../assets/lista_userOptions.svg" alt="">
+                    <p>Ver mi lista</p>
+                </button>
+                <button class="options__button">
+                    <img src="../assets/carrito_userOptions.svg" alt="">
+                    <p>Historial de compras</p>
+                </button>
+                <button class="options__button">
+                    <img src="../assets/money_userOptions.svg" alt="">
+                    <p>Actualizar método de pago</p>
+                </button>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer__logo2-container">
+            <img src="../../public/Logo2.svg" alt="" class="footer__logo2">
+        </div>
+
+        <div class="footer__options-container">
+            <div class="footer__options">
+                <a href="#">Politicas de privacidad</a>
+            </div>
+            <div class="footer__options">
+                <a href="#">Términos y condiciones</a>
+            </div>
+            <div class="footer__options">
+                <a href="#">Contacto</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../scripts/landingScript.js"></script>
+</body>
+</html>
