@@ -1,0 +1,29 @@
+/* Todos los estilos serán tomados de las pantallas de registro, aqui solo adicionaré estilos necesarios */
+body{
+    background-image: url(../assets/Fondo_LogIn.png);
+    background-size: contain;
+    background-size: 1280px 1000px;
+}
+
+
+@media screen and (min-width: 800px) {
+    body{
+        background-position: initial;
+        display: grid;
+        grid-template-columns: 1fr 80vw;
+    }
+
+    header, main{
+        grid-column: 1;
+
+        background-color: #ffffff;
+    }
+
+    .header__title-container{
+        border-bottom: 2px solid var(--darkblueText);
+        border-left: 2px solid var(--darkblueText);
+        border-right: none;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 20px;
+    }
+}
