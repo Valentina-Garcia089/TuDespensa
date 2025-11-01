@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkea tu lista</title>
+    <link rel="stylesheet" href="../styles/regProductStyles.css">
+</head>
+<body>
+    <div class="dark__layer"></div>
+    <header>
+        <button class="return__button">
+            <img src="../assets/backButton.png" alt="Botón para volver a la página anterior">
+        </button>
+    </header>
+
+    <main>
+        <div class="list__container">
+            <ul class="listOfProducts">
+                <!-- Aqui se van a ir agregando los productos a la lista -->
+            </ul>
+
+            <button class="list__add-button" id="add-button">
+                <img src="../assets/addButton.png" alt="Botón para agregar un producto a la lista">
+            </button>
+
+            <div class="form__container" id="hidden_form">
+                <!-- Formulario que estará oculto: -->
+                <form class="product__form">
+                    <button class="product__form-close-button">
+                        <img src="../assets/closeButton.png" alt="Botón para cerrar el formulario">
+                    </button>
+                    <div class="product__input-container">
+                        <label for="product-name">Nombre del producto</label>
+                        <input type="text" class="product__form-name" id="product-name" required>
+                    </div>
+
+                    <div class="product__input-container">
+                        <label for="product-brand">Marca</label>
+                        <input type="marca" class="product__form-brand" id="porduct-brand" required>
+                    </div>
+
+                    <div class="product__input-same-row">
+                        <div class="product__input-container">
+                        <label for="product-quantity">Cantidad (unidad)</label>
+                        <input type="number" class="product__form-quantity"id="product-quantity" required>
+                        </div>
+
+                        <div class="product__input-container">
+                            <label for="product-measurement">Unidad de medida (KG)</label>
+                            <input type="text" class="product__form-measurement" id="product-measurement" required>
+                        </div>
+                    </div>
+
+                    <div class="product__input-container">
+                        <label for="product-frequency">Frecuencia de reposición</label>
+                        <input type="number" class="product__form-frequency" id="product-frequency">
+                    </div>
+
+                    <div class="product__input-container">
+                        <label for="product-notes">Notas adicionales</label>
+                        <input type="text" class="product__form-notes" id="product-notes">
+                    </div>
+                    <button type="submit" class="product__form-submit-button">Agregar</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    
+    <script src="../scripts/registerProductScript.js"></script>
+</body>
+</html>
