@@ -14,9 +14,11 @@ import java.util.Map;
  POST /api/register  -> { nombre, correo, contrasena }
  POST /api/login     -> { correo, contrasena }
 */
+
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "*") // permite llamadas desde el frontend local; ajustar en producción
+@CrossOrigin(origins = "*") // permite llamadas desde el frontend local;
+ 
 public class AuthController {
 
     @Autowired
