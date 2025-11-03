@@ -6,9 +6,10 @@ import java.time.LocalDateTime;
 
 /*
   Entidad Usuario simple para HU-001 y HU-002.
-  NOTA: por simplicidad solicitada, la contraseña se almacena tal cual (texto plano).
-  Esto es INSEGURO en producción. Posteriormente se puede reemplazar por BCrypt o similar.
+  NOTA: por simplicidad, la contraseña se almacena tal cual (texto plano).
+  Posteriormente se puede reemplazar por BCrypt o algo así para encriptar.
 */
+
 @Entity
 @Table(name = "usuarios", uniqueConstraints = {@UniqueConstraint(columnNames = {"correo"})})
 public class Usuario {
