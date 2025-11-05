@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
     // Añadir productos a la lista cuando presionen el botón de tipo submit
     productForm.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -63,11 +64,15 @@ document.addEventListener("DOMContentLoaded", () => {
         li.className = "product__item";
         li.dataset.id = itemId;
 
+
         li.innerHTML = `
-        <div class="product__item-content">
-            <strong class="product__item-name">${escapeHtml(name)}</strong>
-            <span class="product__item-meta"> — ${escapeHtml(quantity)} ${escapeHtml(measurement)}</span>
-        </div>
+            <div class="product__item-content">
+                <input type="checkbox" class="product-checkbox">
+                <div>
+                    <strong class="product__item-name">${escapeHtml(name)}</strong>
+                    <span class="product__item-meta"> — ${escapeHtml(quantity)} ${escapeHtml(measurement)}</span>
+                </div>
+            </div>
         `;
 
         // Agregar al final
@@ -79,4 +84,26 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
+
+
+
+    // BORRAR ELEMENTOS SELECCIONADOS:
+    const deleteBtn = document.querySelector(".list__delete-button");
+
+    function updateDeleteButtonVisibility() {
+        const anyChecked = document.querySelectorAll(".product-checkbox:checked").length > 0;
+        deleteBtn.style.display = anyChecked ? "block" : "none";
+    }
+
+    listEl.addEventListener("change", (e) => {
+        if (e.target.classList.contains("product-checkbox")) {
+            updateDeleteButtonVisibility();
+        }
+    });
+
+    deleteBtn.addEventListener("click", () => {
+        const checkedBoxes = document.querySelectorAll(".product-checkbox:checked");
+        checkedBoxes.forEach(box => box.closest("li").remove());
+        updateDeleteButtonVisibility();
+    });
 });

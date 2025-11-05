@@ -20,16 +20,20 @@
                 <!-- Aqui se van a ir agregando los productos a la lista -->
             </ul>
 
+            <button class="list__delete-button">
+                <img src="../assets/trashButton.png" alt="">
+            </button>
+
             <button class="list__add-button" id="add-button">
                 <img src="../assets/addButton.png" alt="Botón para agregar un producto a la lista">
             </button>
 
             <div class="form__container" id="hidden_form">
+                <button class="product__form-close-button">
+                    <img src="../assets/closeButton.png" alt="Botón para cerrar el formulario">
+                </button>
                 <!-- Formulario que estará oculto: -->
                 <form class="product__form">
-                    <button class="product__form-close-button">
-                        <img src="../assets/closeButton.png" alt="Botón para cerrar el formulario">
-                    </button>
                     <div class="product__input-container">
                         <label for="product-name">Nombre del producto</label>
                         <input type="text" class="product__form-name" id="product-name" required>
