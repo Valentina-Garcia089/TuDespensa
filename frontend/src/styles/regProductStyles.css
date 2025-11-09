@@ -103,7 +103,7 @@ header{
     margin-right: 8px;
 }
 
-.list__delete-button, .list__add-button {
+.list__delete-button, .list__add-button, .list__edit-button {
     position: fixed;
     bottom: 140px;
     right: 5%;
@@ -122,12 +122,21 @@ header{
     cursor: pointer;
 }
 
-.list__delete-button{
+.list__delete-button, .list__edit-button{
     display: none;
 }
 
 .list__delete-button img{
     width: 75%;
+}
+
+.list__edit-button{
+    bottom: 255px;
+    background-color: var(--mainButtonColor);
+}
+
+.list__edit-button img{
+    width: 80%;
 }
 
 
@@ -144,10 +153,10 @@ header{
     display: flex;
     flex-direction: column;
     /* max-height: 75vh; */
-    padding: 40px;
+    /* padding: 40px; */
+    padding: 8px 16px 14px 0px;
     border-radius: 30px;
     max-width: 500px;
-    /* overflow-y: auto; */
 
     position: fixed;
     top: 50%;
@@ -174,17 +183,21 @@ header{
 .product__form{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 10px; /*Espacio entre divs de inputs*/
+    padding: 30px;
 
     max-height: 75vh;
     overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+.product__input-same-row{
+    gap: 20px;
 }
 
 .product__form-close-button{
     align-self: flex-end;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* background-color: red; */
 
     border: none;
     background-color: transparent;
@@ -195,6 +208,8 @@ header{
 }
 
 .product__form-close-button img{
+    position: relative;
+    right: -5px;
     width: 100%;
     cursor: pointer;
 }
