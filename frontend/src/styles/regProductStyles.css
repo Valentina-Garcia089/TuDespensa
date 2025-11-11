@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     font-family: "Montserrat", sans-serif;
+    box-sizing: border-box;
 }
 
 :root {
@@ -22,7 +23,6 @@
 
 body {
     height: 100%;
-    box-sizing: border-box;
 
     background-color: var(--notesColor);
 }
@@ -245,3 +245,133 @@ header{
     font-weight: bold;
     cursor: pointer;
 }
+
+/* --------------------------------------------------- */
+
+
+/*Esto debe estar oculto hasta que el usuario presione el botón para ver el resumen del pedido*/
+.order__summary-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.2rem;
+    /* background-color: red; */
+    width: 100%;
+}
+
+.order__summary-card{
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    padding: 2.1rem;
+    max-width: 600px;
+    width: 100%;
+}
+
+.order__summary-card h2{
+    text-align: center;
+    margin-bottom: 0.8rem;
+    color: var(--darkblueText);
+}
+
+.order__summary-header{
+    display: grid;
+
+    grid-template-columns: 2fr 1fr 2fr 1fr;
+    font-weight: 500;
+    border-bottom: 2px solid var(--darkblueText);
+    padding: 1rem 0 0.5rem 0;
+    color: var(--darkblueText);
+    gap: 40px;
+}
+
+.order__summary-body{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /*Entre cada fila*/
+    margin-top: 0.8rem;
+}
+
+/*Este será el div agregado en JS*/
+.order__summary-row{
+    display: grid;
+
+    grid-template-columns: 2fr 1fr 2fr 1fr;
+    padding: 0.6rem 0.2rem;
+    border-bottom: 1px solid var(--darkblueText);
+    color: var(--mainTextColor);
+}
+
+.order__summary-supplier, .order__summary-total{
+    margin: 0.8rem 0;
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+}
+
+.order__supplier{
+    color: var(--darkblueText);
+    font-weight: 500;
+}
+
+.order__supplier-name, #order-total{
+    text-align: end;
+    color: var(--mainTextColor);
+}
+
+.order__summary-actions{
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding: 1.2rem 0 0 0;
+}
+
+.order__btn{
+    /* background-color: var(--mainButtonColor); */
+    padding: 0.6rem 0.9rem;
+    border-style: none;
+    border-radius: 14px;
+    font-weight: 500;
+    cursor: pointer;
+
+
+    /* Transición para los botones */
+    position: relative;
+    border: 1px solid var(--mainButtonColor);
+    overflow: hidden; /*Con esto el before no sobre sale*/
+    color: var(--mainTextColor);
+    z-index: 0;
+}
+
+.order__btn.cancel{
+    border: 1px solid var(--canceledButtonColor);
+}
+
+.order__btn.cancel::before, .order__btn.confirm::before {
+    content: ""; /*USAR ESTO SIEMPRE AUNQUE ESTÉ VACIO*/
+    background-color: var(--canceledButtonColor);
+    display: block;
+    height: 200%;
+    width: 140%;
+    position: absolute;
+    z-index: -1;
+    transition: top 0.5s, left 0.5s;
+
+    border-radius: 50%;
+    top: 100%;
+    left: 30%;
+    z-index: -1;
+}
+
+.order__btn.confirm::before{
+    background-color: var(--mainButtonColor);
+}
+
+.order__btn.cancel:hover::before, .order__btn.confirm:hover::before {
+    content: "";
+    top: -26%;
+    left: -20%;
+}
+
+
+
+

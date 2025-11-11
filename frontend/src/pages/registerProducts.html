@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkea tu lista</title>
     <link rel="stylesheet" href="../styles/regProductStyles.css">
+
+    <!-- Tipografia -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="dark__layer"></div>
@@ -73,6 +76,44 @@
                 </form>
             </div>
         </div>
+
+
+
+
+
+        <!-- Ahora se debe confirmar el pedido (Ventana modal) -->
+         <section class="order__summary-container" id="order-summary">
+            <div class="order__summary-card">
+                <h2>Resumen del pedido</h2>
+
+                <div class="order__summary-header">
+                    <span>Producto</span>
+                    <span>Cantidad</span>
+                    <span>Unidad</span>
+                    <span>Costo</span> <!--Esto corresponde al costo unitario del producto-->
+                </div>
+
+                <div class="order__summary-body" id="order-summary-body">
+                    <!--Aqui se insertarán las filas con JS-->
+                    <!-- Por cada producto (fila), habrá un div de row -->
+                </div>
+
+                <div class="order__summary-supplier">
+                    <span class="order__supplier-tag">Proveedor</span>
+                    <!--Aqui debería agregarse el otro span con el nombre del proveedor con la clase order__supplier-name-->
+                </div>
+
+                <div class="order__summary-total">
+                    <span>Total estimado</span>
+                    <strong id="order-total">$0</strong>
+                </div>
+
+                <div class="order__summary-actions">
+                    <button class="order__btn cancel">Cancelar</button>
+                    <button class="order__btn confirm">Confirmar pedido</button>
+                </div>
+            </div>
+        </section>
     </main>
     
     <script src="../scripts/registerProductScript.js"></script>
