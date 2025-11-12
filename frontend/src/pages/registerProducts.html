@@ -53,18 +53,18 @@
 
                     <div class="product__input-same-row">
                         <div class="product__input-container">
-                            <label for="product-quantity">Cantidad (unidad)</label>
+                            <label for="product-quantity">Cantidad</label>
                             <input type="number" class="product__form-quantity"id="product-quantity" required>
                         </div>
 
                         <div class="product__input-container">
-                            <label for="product-measurement">Unidad de medida (KG)</label>
+                            <label for="product-measurement">Unidad de medida</label>
                             <input type="text" class="product__form-measurement" id="product-measurement" required>
                         </div>
                     </div>
 
                     <div class="product__input-container">
-                        <label for="product-frequency">Frecuencia de reposición</label>
+                        <label for="product-frequency">Frecuencia de reposición (Días)</label>
                         <input type="number" class="product__form-frequency" id="product-frequency">
                     </div>
 
@@ -80,7 +80,10 @@
 
 
 
-        <button class="order__summary-btn" id="order-summary-btn">Presiona</button>
+        <button class="order__summary-btn" id="order-summary-btn">
+            <img src="../assets/Icono_carrito.svg" alt="">
+            <span>Pedido</span>
+        </button>
         <!-- Ahora se debe confirmar el pedido (Ventana modal) -->
         <section class="order__summary-container" id="order-summary">
             <div class="order__summary-card">
