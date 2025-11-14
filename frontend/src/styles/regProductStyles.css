@@ -61,6 +61,8 @@ header{
 
 .return__button{
     /* margin: auto; */ /*Centra a lo ancho del header*/
+    position: fixed;
+    left: 2%;
     display: grid;
     place-items: center;
     place-content: center;
@@ -255,11 +257,11 @@ header{
 
 
     /* -------------------------------------- */
-    /*////////////// DEBO ARREGLAR ESTO ///////////////////7*/
+    /*//////////// DEBO ARREGLAR ESTO //////////////*/
     overflow: hidden;
     /* -------------------------------------- */
 
-    
+
     color: var(--mainTextColor);
     z-index: 0;
 }
@@ -288,11 +290,12 @@ header{
 
 .order__summary-btn:hover{
     width: 135px;
-    border-radius: 40px;
+    border-radius: 1000px;
+    /* border-radius: 40px; */
 }
 
 /* Imagen: se mueve a la izquierda cuando aparece el span */
-.order__summary-btn img {
+.order__summary-btn img{
     transition: transform 0.4s ease 0.1s;
 }
 
