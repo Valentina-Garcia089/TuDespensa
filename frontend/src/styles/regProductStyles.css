@@ -414,7 +414,7 @@ header{
     padding: 1.2rem 0 0 0;
 }
 
-.order__btn{
+.order__btn, .payment__btn{
     /* background-color: var(--mainButtonColor); */
     padding: 0.6rem 0.9rem;
     border-style: none;
@@ -435,7 +435,7 @@ header{
     border: 1px solid var(--canceledButtonColor);
 }
 
-.order__btn.cancel::before, .order__btn.confirm::before, .product__form-submit-button::before {
+.order__btn.cancel::before, .order__btn.confirm::before, .product__form-submit-button::before, .payment__btn::before {
     content: ""; /*USAR ESTO SIEMPRE AUNQUE ESTÉ VACIO*/
     background-color: var(--canceledButtonColor);
     display: block;
@@ -451,11 +451,11 @@ header{
     z-index: -1;
 }
 
-.order__btn.confirm::before, .product__form-submit-button::before{
+.order__btn.confirm::before, .product__form-submit-button::before, .payment__btn::before{
     background-color: var(--mainButtonColor);
 }
 
-.order__btn.cancel:hover::before, .order__btn.confirm:hover::before,  .product__form-submit-button:hover:before{
+.order__btn.cancel:hover::before, .order__btn.confirm:hover::before,  .product__form-submit-button:hover:before, .payment__btn:hover::before{
     content: "";
     top: -26%;
     left: -20%;

@@ -16,9 +16,9 @@
 
 
 /* ----------------MAIN SECTION------------------- */
-.actual__method-container, .method__select-container{
+/* .actual__method-container, .method__select-container{
     
-}
+} */
 
 .actual__method{
     background: violet;
@@ -82,7 +82,7 @@
     transform: translateX(2px);
 }
 
-.options__container{
+.options__container, .form__container2{
     background-color: #fff;
     padding: 15px 20px;
     border-radius: 17px;
@@ -99,7 +99,7 @@
     z-index: 20;
 }
 
-.options__container.open {
+.options__container.open, .form__container2.open {
     visibility: visible;
     opacity: 1;
     transform: translate(-50%, -50%);
@@ -169,6 +169,111 @@ p{
     font-weight: 500;
 }
 
+
+/*-----------------Datos tarjeta de credito-------------- */
+.form__input-separator{
+    margin-bottom: 30px;
+}
+
+.form__input{
+    width: 100%;
+    height: fit-content;
+
+    display: flex;
+    align-items: center;
+
+    border-radius: 4px;
+
+    position: relative;
+
+    border: none;
+    border: 1px solid #ccc;
+}
+
+/* La línea superior (oculta al inicio) */
+.form__container2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form__input::before {
+    content: "";
+    position: absolute;
+    top: -7.5px;
+    left: 0px;
+    right: 280px;
+    height: 1px;
+    
+    background-color: #cccccce7;
+
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.iTwo::before{
+    right: 314px;
+}
+
+.iThree::before{
+    right: 268px;
+}
+
+.form__input:focus-within::before {
+    opacity: 0;
+}
+
+.form__input legend{
+    padding: 0 7px;
+    font-size: 0.7rem;
+
+    transform: translate(35px, 21px);
+    transition: transform 0.3s ease, font-size 0.3s ease;
+}
+
+.two legend, .three legend{
+    transform: translate(5px, 21px);
+    z-index: 20;
+}
+
+
+.form__input:focus-within  legend{
+    display: block;
+    padding: 0 7px;
+    font-size: 0.8rem;
+
+    transform: translate(0, 0);
+}
+
+input[type="date"]::-webkit-datetime-edit {
+    color: transparent;
+}
+
+
+.form__input img{
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+}
+
+.form__input input{
+    padding: 8px 12px;
+    width: 100%;
+    border-style: none;
+    outline: none;
+
+    font-size: 0.7rem;
+} 
+
+
+.payment__btn{
+    align-self: center;
+    
+}
+
+
+
+/* ---------------WRAPPER-------------- */
 
 .method__select-container{
     /* background-color: blue; */
