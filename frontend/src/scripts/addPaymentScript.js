@@ -19,6 +19,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const addCreditCard = document.getElementById("credit__card-btn");
     const hiddenForm = document.getElementById("hidden-method");
+    const firstReturnBtn = document.getElementById("return-btn");
+
+    firstReturnBtn.addEventListener("click", () => {
+        window.location.href = "optionsPerUser.html";
+    })
 
     function openModal(){
         darkLayer.classList.add("active");

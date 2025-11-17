@@ -20,6 +20,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeBtn = document.querySelector(".product__form-close-button");
     const productForm = document.querySelector(".product__form");
     const listEl = document.querySelector(".listOfProducts");
+    const returnBtn = document.getElementById("return-btn");
+
+    returnBtn.addEventListener("click", () => {
+        window.location.href = "optionsPerUser.html";
+    })
 
     function openModal(){
         darkLayer.classList.add("active");

@@ -1,14 +1,14 @@
 // Redireccionamiento del registro 1 al 2
-const btnCancelar = document.getElementById("logIn__buttons-cancel");
+const btnCancelar = document.getElementById("register__buttons-cancel");
 btnCancelar.addEventListener("click", () =>{
     window.location.href = "landing.html";
 })
 
-const btnSiguiente = document.getElementById("logIn__buttons-next");
-const form = document.querySelector(".logIn"); // Validar que los campos del LogIn estén llenos (Lo mismo con las egunda pag)
+const btnSiguiente = document.getElementById("register__buttons-next");
+const form = document.querySelector(".register");
 btnSiguiente.addEventListener("click", () =>{
     if(!form.checkValidity()){
-        form.reportValidity(); // Muestra el mensaje predeterminado
+        form.reportValidity();
         return
     }
 

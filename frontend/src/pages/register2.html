@@ -22,23 +22,31 @@
     </header>
 
     <main>
-        <form class="logIn">
-            <div class="logIn__inputs-container">
-                <label for="logIn__inputs-name">Email</label>
-                <input type="text" id="logIn__inputs-name" required>
+        <form class="register">
+            <div class="register__inputs-container">
+                <label for="register__inputs-name">Email</label>
+                <input type="text" id="register__inputs-name" required>
             </div>
 
-            <div class="logIn__inputs-container">
-                <label for="logIn__inputs-password">Contraseña</label>
-                <input type="text" id="logIn__inputs-LastName" required>
+            <div class="register__inputs-container">
+                <label for="register__inputs-password">Contraseña</label>
+                <input type="text" id="register__inputs-password" required>
             </div>
 
-            <div class="logIn__buttons-container">
-                <button class="logIn__buttons">Crear Cuenta</button>
+            <div class="register__buttons-container">
+                <button type="button" class="register__buttons" id="register-btn">Crear Cuenta</button>
             </div>
         </form>
     </main>
 
-    <script src="../scripts/registerScript.js"></script>
+    <!--modal de registro exitoso   -->
+    <div class="success-modal" id="success-modal">
+        <div class="success-modal__card">
+            <h2>¡Registro exitoso!</h2>
+            <p>Serás redirigido en unos segundos...</p>
+        </div>
+    </div>
+
+    <script src="../scripts/register2Script.js"></script>
 </body>
 </html>

@@ -18,7 +18,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const bodyContainer = document.getElementById("order-summary-body");
     const supplierName = document.getElementById("supplier-name");
     const totalLabel = document.getElementById("order-total");
+    const returnBtn = document.getElementById("return-btn");
 
+    returnBtn.addEventListener("click", () => {
+        window.location.href = "optionsPerUser.html";
+    })
 
 
     
