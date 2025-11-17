@@ -55,4 +55,67 @@ document.addEventListener("DOMContentLoaded", () => {
             closeModal();
         }
     })
+
+
+
+
+    // -----------DESPLEGABLE------------
+    let paymentMethods = []; //esto es sin la base de datos--------
+
+    const dropdown = document.querySelector(".dropdown-list");
+    const selectHeader = document.querySelector(".method__select-value");
+    const currentMethodDisplay = document.getElementById("actual-method");
+    currentMethodDisplay.textContent = "Debe seleccionar un método de pago";
+    currentMethodDisplay.style.color = '#363535c1';
+
+    const saveCardBtn = document.querySelector(".payment__btn");
+
+
+
+    //abrir y cerrar el dropdown
+    selectHeader.addEventListener("click", () => {
+        dropdown.classList.toggle("open");
+        selectHeader.classList.toggle("open"); //activa la rotación
+    });
+
+    function renderDropdown() {
+        dropdown.innerHTML = "";
+
+        paymentMethods.forEach((method, index) => {
+            const li = document.createElement("li");
+            li.classList.add("dropdown-item");
+            li.textContent = method;
+
+            li.addEventListener("click", () => {
+                currentMethodDisplay.textContent = method;
+                dropdown.classList.remove("open");
+            });
+
+            dropdown.appendChild(li);
+        });
+    }
+
+
+    //guardar el nuevo método de pago en el dropdown
+    saveCardBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        const cardNumber = document.querySelector("input[type='number']").value;
+        if (!cardNumber) {
+            return alert("Ingrese un número de tarjeta");
+        }
+
+        //Ocultar parte de la tarjeta
+        const masked = "Tarjeta •••• " + cardNumber.slice(-4);
+
+        // guardar en la lista local
+        paymentMethods.push(masked);
+
+        //actualizar dropdown y método actual
+        renderDropdown();
+        currentMethodDisplay.textContent = masked;
+        currentMethodDisplay.style.color = '#212121';
+        hiddenForm.reset();
+        closeForm();
+    });
 });

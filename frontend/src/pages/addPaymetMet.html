@@ -27,11 +27,23 @@
             </div>
         </div>
 
+        <!-- SELECT & OPTION -->
+        <div class="method__select-container">
+            <div class="method__select-value">
+                <span>Método de pago existente</span>
+                <img src="../assets/up-arroww.png">
+            </div>
+
+            <ul class="dropdown-list">
+                <!-- Aqui se van a agregar los métodos de pago ya creados -->
+            </ul>
+        </div>
+
+
         <button class="add__method-btn" id="add-method-btn">
             <img src="../assets/addButton.png" alt="Botón para añadir un nuevo método de pago">
             <span>Nuevo método de pago</span>
         </button>
-
 
         <div class="options__container" id="hidden-options">
             <div class="return__btn-container">
@@ -91,18 +103,6 @@
             </div>
             <button type="submit" class="payment__btn">Guardar tarjeta</button>
         </form>
-
-        <!-- SELECT & OPTION -->
-        <div class="method__select-container">
-            <div class="method__select-value">
-                <span>Método de pago existente</span>
-                <img src="../assets/up-arroww.png">
-            </div>
-    
-            <ul class="dropdown-list">
-                <!-- Aqui se van a agregar los métodos de pago ya creados -->
-            </ul>
-        </div>
     </main>
     
     <script src="../scripts/addPaymentScript.js"></script>
