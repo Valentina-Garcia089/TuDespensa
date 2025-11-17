@@ -389,6 +389,7 @@ header{
     padding: 0.6rem 0.2rem;
     border-bottom: 1px solid var(--darkblueText);
     color: var(--mainTextColor);
+    gap: 40px;
 }
 
 .order__summary-supplier, .order__summary-total{
@@ -461,6 +462,28 @@ header{
     left: -20%;
 }
 
+
+
+
+
+@media (max-width: 510px) {
+
+    .order__summary-card {
+        padding: 1.2rem;
+    }
+
+    /*ajustar el tamaño de las columnas para que no se rompa el layout en dispositivos mas pequeños*/
+    .order__summary-header, .order__summary-row {
+        grid-template-columns: 1.3fr 1fr 1fr 1fr;
+        gap: 12px;
+    }
+
+    .order__summary-header span, .order__summary-row span {
+        font-size: 0.82rem;
+        word-wrap: break-word; /*Romper la palabra para que quedpa en el contenedor*/
+        overflow-wrap: break-word;
+    }
+}
 
 
 

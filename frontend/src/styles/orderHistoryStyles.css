@@ -1,0 +1,41 @@
+.history__container {
+    padding: 2rem;
+}
+
+.history__title {
+    text-align: center;
+    color: var(--darkblueText);
+    margin-bottom: 1.5rem;
+    font-size: 1.6rem;
+}
+
+.history__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.history__item {
+    background: white;
+    border-radius: 14px;
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    cursor: pointer;
+    border-left: 6px solid var(--headerColor);
+    transition: transform .2s ease;
+}
+
+.history__item:hover {
+    transform: translateY(-2px);
+}
+
+.history__item p {
+    margin: 0.25rem 0;
+    color: var(--mainTextColor);
+}
+
+.history__item .date {
+    font-weight: 600;
+    color: var(--darkblueText);
+}
