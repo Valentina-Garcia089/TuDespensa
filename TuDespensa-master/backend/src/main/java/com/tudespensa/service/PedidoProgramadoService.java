@@ -38,22 +38,28 @@ public class PedidoProgramadoService {
     // Para demo: cada 60 segundos
     @Scheduled(fixedRate = 60000)
     public void verificarPedidosProgramados() {
-        List<PedidoProgramado> pendientes = repository.findByActivoTrueAndProximaEjecucionBefore(LocalDateTime.now());
+        try {
+            List<PedidoProgramado> pendientes = repository.findByActivoTrueAndProximaEjecucionBefore(LocalDateTime.now());
 
-        for (PedidoProgramado pp : pendientes) {
-            // Crear notificación
-            HistorialNotificaciones notif = new HistorialNotificaciones();
-            notif.setUsuario(pp.getUsuario());
-            notif.setMensaje("Recordatorio: Tu pedido programado de la lista #" + pp.getListaCompras().getIdLista() + " está listo para ser confirmado.");
-            notif.setFechaEnvio(LocalDateTime.now());
-            notif.setLeido(false);
-            notificacionesService.guardar(notif);
+            for (PedidoProgramado pp : pendientes) {
+                // Crear notificación
+                HistorialNotificaciones notif = new HistorialNotificaciones();
+                notif.setUsuario(pp.getUsuario());
+                notif.setMensaje("Recordatorio: Tu pedido programado de la lista #" + pp.getListaCompras().getIdLista() + " está listo para ser confirmado.");
+                notif.setFechaEnvio(LocalDateTime.now());
+                notif.setLeido(false);
+                notificacionesService.guardar(notif);
 
-            // Actualizar próxima ejecución
-            pp.setProximaEjecucion(LocalDateTime.now().plusDays(pp.getFrecuenciaDias()));
-            repository.save(pp);
-            
-            System.out.println("🔔 Notificación enviada para pedido programado ID: " + pp.getIdPedidoProgramado());
+                // Actualizar próxima ejecución
+                pp.setProximaEjecucion(LocalDateTime.now().plusDays(pp.getFrecuenciaDias()));
+                repository.save(pp);
+                
+                System.out.println("🔔 Notificación enviada para pedido programado ID: " + pp.getIdPedidoProgramado());
+            }
+        } catch (Exception e) {
+            // Manejar el error silenciosamente durante el inicio de la aplicación
+            // Esto puede ocurrir si la tabla aún no existe (primera ejecución con ddl-auto=update)
+            System.out.println("⚠️  Tarea programada: No se pudo verificar pedidos programados. Esto es normal durante el primer inicio. Detalle: " + e.getMessage());
         }
     }
 }
