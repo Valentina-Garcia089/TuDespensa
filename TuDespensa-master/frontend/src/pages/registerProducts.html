@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkea tu lista</title>
+    <link rel="stylesheet" href="../styles/regProductStyles.css">
+
+    <!-- Tipografia -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="dark__layer"></div>
+    <header>
+        <button type="button" class="return__button" id="return-btn">
+            <img src="../assets/backButton.png" alt="Botón para volver a la página anterior">
+        </button>
+    </header>
+
+    <main>
+        <div class="list__container">
+            <ul class="listOfProducts">
+                <!-- Aqui se van a ir agregando los productos a la lista -->
+            </ul>
+
+            <button class="list__edit-button">
+                <img src="../assets/editButton.png" alt="Botón para editar un producto">
+            </button>
+
+            <button class="list__delete-button">
+                <img src="../assets/trashButton.png" alt="Botón para eliminar un producto">
+            </button>
+
+            <button class="list__add-button" id="add-button">
+                <img src="../assets/addButton.png" alt="Botón para agregar un producto a la lista">
+            </button>
+
+            <div class="form__container" id="hidden_form">
+                <button class="product__form-close-button">
+                    <img src="../assets/closeButton.png" alt="Botón para cerrar el formulario">
+                </button>
+                <!-- Formulario que estará oculto: -->
+                <form class="product__form">
+                    <div class="product__input-container">
+                        <label for="product-name">Nombre del producto</label>
+                        <input type="text" class="product__form-name" id="product-name" required>
+                    </div>
+
+                    <div class="product__input-container">
+                        <label for="product-brand">Marca</label>
+                        <input type="marca" class="product__form-brand" id="porduct-brand" required>
+                    </div>
+
+                    <div class="product__input-same-row">
+                        <div class="product__input-container">
+                            <label for="product-quantity">Cantidad</label>
+                            <input type="number" class="product__form-quantity" id="product-quantity" required>
+                        </div>
+
+                        <div class="product__input-container">
+                            <label for="product-measurement">Unidad de medida</label>
+                            <input type="text" class="product__form-measurement" id="product-measurement" required>
+                        </div>
+                    </div>
+
+                    <div class="product__input-container">
+                        <label for="product-frequency">Frecuencia de reposición (Días)</label>
+                        <input type="number" class="product__form-frequency" id="product-frequency">
+                    </div>
+
+                    <div class="product__input-container">
+                        <label for="product-notes">Notas adicionales</label>
+                        <input type="text" class="product__form-notes" id="product-notes">
+                    </div>
+                    <button type="submit" class="product__form-submit-button">Agregar</button>
+                </form>
+            </div>
+        </div>
+
+
+
+
+        <button class="order__summary-btn" id="order-summary-btn">
+            <img src="../assets/Icono_carrito.svg" alt="">
+            <span>Pedido</span>
+        </button>
+        <!-- Ahora se debe confirmar el pedido (Ventana modal) -->
+        <section class="order__summary-container" id="order-summary">
+            <div class="order__summary-card">
+                <h2>Resumen del pedido</h2>
+
+                <div class="order__summary-header">
+                    <span>Producto</span>
+                    <span>Cantidad</span>
+                    <span>Unidad</span>
+                    <span>Costo</span> <!--Esto corresponde al costo unitario del producto-->
+                </div>
+
+                <div class="order__summary-body" id="order-summary-body">
+                    <!--Aqui se insertarán las filas con JS-->
+                    <!-- Por cada producto (fila), habrá un div de row -->
+                </div>
+
+                <div class="order__summary-supplier">
+                    <span class="order__supplier-tag">Proveedor</span>
+                    <span class="order__supplier-name" id="supplier-name"></span>
+                </div>
+
+                <div class="order__summary-payment" style="margin: 15px 0; padding: 10px; border-top: 1px solid #eee;">
+                    <label for="payment-method-select"
+                        style="display: block; margin-bottom: 5px; font-weight: bold;">Método de Pago:</label>
+                    <select id="payment-method-select"
+                        style="width: 100%; padding: 8px; font-size: 14px; border: 1px solid #ddd; border-radius: 4px;">
+                        <option value="">Cargando...</option>
+                    </select>
+                </div>
+
+                <div class="order__summary-total">
+                    <span>Total estimado</span>
+                    <strong id="order-total">$0</strong>
+                </div>
+
+                <div class="order__summary-actions">
+                    <button class="order__btn cancel">Cancelar</button>
+                    <button class="order__btn confirm">Confirmar pedido</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../scripts/registerProductScript.js"></script>
+
+    <!-- Script especial para la ventana modal que muestra el resumen de pedido -->
+    <script src="../scripts/orderSumScript.js"></script>
+</body>
+
+</html>

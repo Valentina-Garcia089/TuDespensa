@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de compras</title>
+    <link rel="stylesheet" href="../styles/regProductStyles.css">
+
+    <link rel="stylesheet" href="../styles/orderHistoryStyles.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <button type="button" class="return__button" id="return-btn">
+            <img src="../assets/backButton.png" alt="Volver">
+        </button>
+    </header>
+
+    <main class="history__container">
+
+        <h2 class="history__title">Historial de pedidos</h2>
+
+        <ul class="history__list" id="history-list">
+            <!-- con js se insertarán los pedidos -->
+        </ul>
+
+    </main>
+
+    <!-- reutilización del modal "resumen de pedido" -->
+    <section class="order__summary-container" id="order-summary">
+        <div class="order__summary-card">
+            <h2>Detalle del pedido</h2>
+
+            <div class="order__summary-header">
+                <span>Producto</span>
+                <span>Cantidad</span>
+                <span>Unidad</span>
+                <span>Costo</span>
+            </div>
+
+            <div class="order__summary-body" id="order-summary-body"></div>
+
+            <div class="order__summary-supplier">
+                <span class="order__supplier-tag">Proveedor</span>
+                <span id="supplier-name" class="order__supplier-name"></span>
+            </div>
+
+            <div class="order__summary-total">
+                <span>Total estimado</span>
+                <strong id="order-total">$0</strong>
+            </div>
+
+            <!-- ya no se incluyen los botones que estaban en el modal "resumen de pedido" -->
+        </div>
+    </section>
+
+    <div class="dark__layer"></div>
+
+    <script src="../scripts/orderHistoryScript.js"></script>
+</body>
+</html>
