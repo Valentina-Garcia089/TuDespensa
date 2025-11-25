@@ -13,7 +13,8 @@ public class MetodoPagoService {
     private MetodoPagoRepository repository;
 
     public List<MetodoPago> listarPorUsuario(Integer idUsuario) {
-        return repository.findByUsuarioIdUsuario(idUsuario);
+        // Solo retornar métodos de pago activos
+        return repository.findByUsuarioIdUsuarioAndActivoTrue(idUsuario);
     }
 
     public MetodoPago guardar(MetodoPago metodo) {
@@ -21,6 +22,10 @@ public class MetodoPagoService {
     }
 
     public void eliminar(Integer id) {
-        repository.deleteById(id);
+        // Soft delete: marcar como inactivo en lugar de eliminar
+        MetodoPago metodo = repository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Método de pago no encontrado"));
+        metodo.setActivo(false);
+        repository.save(metodo);
     }
 }

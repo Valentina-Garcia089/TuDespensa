@@ -8,4 +8,5 @@ import java.util.List;
 @Repository
 public interface MetodoPagoRepository extends JpaRepository<MetodoPago, Integer> {
     List<MetodoPago> findByUsuarioIdUsuario(Integer idUsuario);
+    List<MetodoPago> findByUsuarioIdUsuarioAndActivoTrue(Integer idUsuario);
 }

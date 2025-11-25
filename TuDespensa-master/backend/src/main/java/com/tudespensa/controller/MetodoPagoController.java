@@ -43,6 +43,10 @@ public class MetodoPagoController {
 
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable Integer id) {
-        service.eliminar(id);
+        try {
+            service.eliminar(id);
+        } catch (RuntimeException e) {
+            throw new RuntimeException("Error al eliminar método de pago: " + e.getMessage());
+        }
     }
 }

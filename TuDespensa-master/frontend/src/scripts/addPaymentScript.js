@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
         })
             .then(res => {
                 if (res.ok) {
-                    alert("Método de pago eliminado");
+                    alert("Método de pago eliminado exitosamente");
                     loadPaymentMethods(); // Recargar lista
                     // Resetear selección si era el eliminado
                     if (currentMethodDisplay.dataset.selectedId == id) {
@@ -180,10 +180,15 @@ document.addEventListener("DOMContentLoaded", () => {
                         delete currentMethodDisplay.dataset.selectedId;
                     }
                 } else {
-                    alert("Error al eliminar el método de pago");
+                    return res.text().then(errorMsg => {
+                        throw new Error(errorMsg || "Error desconocido al eliminar");
+                    });
                 }
             })
-            .catch(err => console.error("Error deleting payment method:", err));
+            .catch(err => {
+                console.error("Error deleting payment method:", err);
+                alert("Error al eliminar el método de pago: " + err.message);
+            });
     }
 
     if (usuarioId) {
