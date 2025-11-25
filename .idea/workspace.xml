@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0cbf6e67-ac46-43fc-8e87-084033564312" name="Changes" comment="implementación de PostgreSQL">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/TuDespensa-master.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/TuDespensa-master.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/config/ProductoSupermercadoSeeder.java" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/config/ProductoSupermercadoSeeder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/controller/FacturaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/controller/FacturaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/controller/MetodoPagoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/controller/MetodoPagoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/controller/PedidoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/controller/PedidoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/controller/ProductoUsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/controller/ProductoUsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/model/HistorialNotificaciones.java" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/model/HistorialNotificaciones.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/model/MetodoPago.java" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/model/MetodoPago.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/service/GestorPedidos.java" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/service/GestorPedidos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/service/HistorialNotificacionesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/service/HistorialNotificacionesService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/service/ProductoUsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/service/ProductoUsuarioService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/service/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/service/UsuarioService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TuDespensa-master/database/tudespensa_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/database/tudespensa_db.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TuDespensa-master/frontend/src/pages/addPaymetMet.html" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/frontend/src/pages/addPaymetMet.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TuDespensa-master/frontend/src/pages/registerProducts.html" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/frontend/src/pages/registerProducts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TuDespensa-master/frontend/src/scripts/addPaymentScript.js" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/frontend/src/scripts/addPaymentScript.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TuDespensa-master/frontend/src/scripts/orderSumScript.js" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/frontend/src/scripts/orderSumScript.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TuDespensa-master/frontend/src/scripts/register2Script.js" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/frontend/src/scripts/register2Script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TuDespensa-master/frontend/src/scripts/registerProductScript.js" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/frontend/src/scripts/registerProductScript.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TuDespensa-master/frontend/src/styles/regProductStyles.css" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/frontend/src/styles/regProductStyles.css" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Ivarez&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Valentina-Garcia089/TuDespensa&quot;,
+    &quot;accountId&quot;: &quot;9341f5bf-a0bc-4bec-bc25-1bf372186aca&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="35nSA8dhqbMW68tc9EAnIpwGbEy" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Maven.backend [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.backend [compile].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Notification.DisplayName-DoNotAsk-DatabaseConfigFileWatcher.found&quot;: &quot;Database connection parameters found&quot;,
+    &quot;Notification.DoNotAsk-DatabaseConfigFileWatcher.found&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.TuDespensaApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ivanf/Documents/Universidad/FIS/TuDespensa-master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ]
+  }
+}</component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn compile" />
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="TuDespensaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="backend" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.tudespensa.TuDespensaApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.27812.49" />
+        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-IU-251.27812.49" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0cbf6e67-ac46-43fc-8e87-084033564312" name="Changes" comment="" />
+      <created>1763744196544</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1763744196544</updated>
+      <workItem from="1763744197876" duration="14846000" />
+      <workItem from="1763777510670" duration="404000" />
+      <workItem from="1763777941212" duration="5131000" />
+      <workItem from="1763825438300" duration="210000" />
+      <workItem from="1763825710414" duration="13658000" />
+      <workItem from="1763844332189" duration="15342000" />
+      <workItem from="1763917948264" duration="19171000" />
+      <workItem from="1763944203010" duration="17423000" />
+      <workItem from="1764019085289" duration="1777000" />
+      <workItem from="1764024822630" duration="6870000" />
+      <workItem from="1764034725961" duration="6726000" />
+      <workItem from="1764044962749" duration="1116000" />
+    </task>
+    <task id="LOCAL-00001" summary="Mi versión del proyecto">
+      <option name="closed" value="true" />
+      <created>1763943459166</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1763943459172</updated>
+    </task>
+    <task id="LOCAL-00002" summary="application.properties con PostgreSQL">
+      <option name="closed" value="true" />
+      <created>1763952844047</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1763952844048</updated>
+    </task>
+    <task id="LOCAL-00003" summary="implementación de PostgreSQL">
+      <option name="closed" value="true" />
+      <created>1763954215188</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1763954215190</updated>
+    </task>
+    <task id="LOCAL-00004" summary="implementación de PostgreSQL">
+      <option name="closed" value="true" />
+      <created>1763954262105</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1763954262105</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Mi versión del proyecto" />
+    <MESSAGE value="application.properties con PostgreSQL" />
+    <MESSAGE value="implementación de PostgreSQL" />
+    <option name="LAST_COMMIT_MESSAGE" value="implementación de PostgreSQL" />
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
+  </component>
+</project>

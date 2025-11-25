@@ -1,0 +1,505 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+    box-sizing: border-box;
+}
+
+:root {
+    --headerColor: #64B5F6; /* Este color también se usa para botón*/
+    --mainColor: #F5F5F5;
+    --mainButtonColor: #FF9800;
+    --canceledButtonColor: #E57373;
+    --mainTextColor: #212121;
+    --darkblueText: #001223;
+    --blankColor: #D9D9D9; /* Color usado en opciones del landing y espacios del Log In y del Sign Up*/
+
+    --notesColor: #E6F4EA;
+    --purchaseHistoryColor: #FFF9C4;
+    --paymentMethodColor: #FFE0B2;
+
+    font-size: 16px;
+}
+
+body {
+    height: 100%;
+
+    background-color: var(--notesColor);
+}
+
+.dark__layer{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.dark__layer.active {
+    display: block;
+    opacity: 1;
+    pointer-events: all;
+}
+
+
+/* ----------------HEADER SECTION------------------- */
+
+header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 60px;
+
+    border-bottom: 1px solid var(--darkblueText);
+}
+
+.return__button{
+    /* margin: auto; */ /*Centra a lo ancho del header*/
+    position: fixed;
+    left: 2%;
+    display: grid;
+    place-items: center;
+    place-content: center;
+    width: 35px;
+    height: 35px;
+    margin: 0 10px;
+
+    border-style: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.return__button img{
+    width: 170%;
+}
+
+
+
+
+
+/* ----------------MAIN SECTION------------------- */
+
+.list__container{
+    padding: 0 36px;
+}
+
+.listOfProducts{
+    list-style:none;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.listOfProducts li {
+    background: white;
+    border-radius: 12px;
+    padding: 12px 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.listOfProducts li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.product__item-content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.product-checkbox{
+    margin-right: 8px;
+}
+
+.list__delete-button, .list__add-button, .list__edit-button {
+    position: fixed;
+    bottom: 140px;
+    right: 5%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+    width: 80px;
+    height: 80px;
+
+    border-radius: 16px;
+    background-color: var(--canceledButtonColor);
+
+    cursor: pointer;
+}
+
+.list__delete-button, .list__edit-button{
+    display: none;
+}
+
+.list__delete-button img{
+    width: 75%;
+}
+
+.list__edit-button{
+    bottom: 255px;
+    background-color: var(--mainButtonColor);
+}
+
+.list__edit-button img{
+    width: 80%;
+}
+
+
+.list__add-button{
+    bottom: 25px;
+    background-color: var(--purchaseHistoryColor);
+}
+
+.list__add-button img{
+    width: 130%
+}
+
+.form__container{
+    display: flex;
+    flex-direction: column;
+    /* max-height: 75vh; */
+    /* padding: 40px; */
+    padding: 8px 16px 14px 0px;
+    border-radius: 30px;
+    max-width: 500px;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    /* Si se deja el display no se alcanza a ver la animación */
+    /* display: none; */
+    visibility: hidden;
+
+    background-color: var(--paymentMethodColor);
+
+
+    opacity: 0;
+    transition: opacity 0.3s ease, transform .2s ease;
+    z-index: 20;
+}
+
+.form__container.open {
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-50%, -50%);
+}
+
+.product__form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /*Espacio entre divs de inputs*/
+    padding: 30px;
+
+    max-height: 75vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+.product__input-same-row{
+    gap: 20px;
+}
+
+.product__form-close-button{
+    align-self: flex-end;
+    /* background-color: red; */
+
+    border: none;
+    background-color: transparent;
+
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.product__form-close-button img{
+    position: relative;
+    right: -5px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.product__input-container{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.product__input-container label{
+    font-weight: 500;
+}
+
+.product__form input{
+    border: none;
+    border-radius: 16px;
+    padding: 10px 12px;
+    margin-top: 10px;
+}
+
+.product__input-same-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.product__form-submit-button{
+    align-self: center;
+    margin-top: 10px;
+    width: 150px;
+    padding:10px 12px;
+    border: none;
+    border-radius: 14px;
+    font-weight: bold;
+    cursor: pointer;
+
+    /* Transición para los botones */
+    position: relative;
+    border: 1px solid var(--mainButtonColor);
+
+
+
+
+    /* -------------------------------------- */
+    /*//////////// DEBO ARREGLAR ESTO //////////////*/
+    overflow: hidden;
+    /* -------------------------------------- */
+
+
+    color: var(--mainTextColor);
+    z-index: 0;
+}
+
+
+/* --------------------------------------------------- */
+.order__summary-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border-style: none;
+    background-color: var(--headerColor);
+
+    cursor: pointer;
+
+    position: fixed;
+    top: 7px;
+    right: 5%;
+    overflow: hidden;
+
+    transition: border-radius 0.3s ease, width 0.3s ease;
+}
+
+.order__summary-btn:hover{
+    width: 135px;
+    border-radius: 1000px;
+    /* border-radius: 40px; */
+}
+
+/* Imagen: se mueve a la izquierda cuando aparece el span */
+.order__summary-btn img{
+    transition: transform 0.4s ease 0.1s;
+}
+
+.order__summary-btn:hover img {
+    transform: translateX(-5px);
+}
+
+.order__summary-btn span{
+    position: absolute;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--mainTextColor);
+    transform: translateX(20px);
+    opacity: 0;
+
+    transition: opacity 0.3s ease, transform 0.4s ease;
+}
+
+/* Si se pasa el cursor por encima del botón, afectará al span */
+.order__summary-btn:hover span{
+    position: sticky;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+
+
+/*Esto debe estar oculto hasta que el usuario presione el botón para ver el resumen del pedido*/
+.order__summary-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.2rem;
+    /* background-color: red; */
+    width: 100%;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform .2s ease;
+    z-index: 20;
+}
+
+.order__summary-container.open{
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-50%, -50%);
+}
+
+.order__summary-card{
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    padding: 2.1rem;
+    max-width: 600px;
+    width: 100%;
+}
+
+.order__summary-card h2{
+    text-align: center;
+    margin-bottom: 0.8rem;
+    color: var(--darkblueText);
+}
+
+.order__summary-header{
+    display: grid;
+
+    grid-template-columns: 2fr 1fr 2fr 1fr;
+    font-weight: 500;
+    border-bottom: 2px solid var(--darkblueText);
+    padding: 1rem 0 0.5rem 0;
+    color: var(--darkblueText);
+    gap: 40px;
+}
+
+.order__summary-body{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /*Entre cada fila*/
+    margin-top: 0.8rem;
+}
+
+/*Este será el div agregado en JS*/
+.order__summary-row{
+    display: grid;
+
+    grid-template-columns: 2fr 1fr 2fr 1fr;
+    padding: 0.6rem 0.2rem;
+    border-bottom: 1px solid var(--darkblueText);
+    color: var(--mainTextColor);
+    gap: 40px;
+}
+
+.order__summary-supplier, .order__summary-total{
+    margin: 0.8rem 0;
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+}
+
+.order__supplier{
+    color: var(--darkblueText);
+    font-weight: 500;
+}
+
+.order__supplier-name, #order-total{
+    text-align: end;
+    color: var(--mainTextColor);
+}
+
+.order__summary-actions{
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding: 1.2rem 0 0 0;
+}
+
+.order__btn, .payment__btn{
+    /* background-color: var(--mainButtonColor); */
+    padding: 0.6rem 0.9rem;
+    border-style: none;
+    border-radius: 14px;
+    font-weight: 500;
+    cursor: pointer;
+
+
+    /* Transición para los botones */
+    position: relative;
+    border: 1px solid var(--mainButtonColor);
+    overflow: hidden; /*Con esto el before no sobre sale*/
+    color: var(--mainTextColor);
+    z-index: 0;
+}
+
+.order__btn.cancel{
+    border: 1px solid var(--canceledButtonColor);
+}
+
+.order__btn.cancel::before, .order__btn.confirm::before, .product__form-submit-button::before, .payment__btn::before {
+    content: ""; /*USAR ESTO SIEMPRE AUNQUE ESTÉ VACIO*/
+    background-color: var(--canceledButtonColor);
+    display: block;
+    height: 200%;
+    width: 140%;
+    position: absolute;
+    z-index: -1;
+    transition: top 0.5s, left 0.5s;
+
+    border-radius: 50%;
+    top: 100%;
+    left: 30%;
+    z-index: -1;
+}
+
+.order__btn.confirm::before, .product__form-submit-button::before, .payment__btn::before{
+    background-color: var(--mainButtonColor);
+}
+
+.order__btn.cancel:hover::before, .order__btn.confirm:hover::before,  .product__form-submit-button:hover:before, .payment__btn:hover::before{
+    content: "";
+    top: -26%;
+    left: -20%;
+}
+
+
+
+
+
+@media (max-width: 510px) {
+
+    .order__summary-card {
+        padding: 1.2rem;
+    }
+
+    /*ajustar el tamaño de las columnas para que no se rompa el layout en dispositivos mas pequeños*/
+    .order__summary-header, .order__summary-row {
+        grid-template-columns: 1.3fr 1fr 1fr 1fr;
+        gap: 12px;
+    }
+
+    .order__summary-header span, .order__summary-row span {
+        font-size: 0.82rem;
+        word-wrap: break-word; /*Romper la palabra para que quedpa en el contenedor*/
+        overflow-wrap: break-word;
+    }
+}
+
+
+
+

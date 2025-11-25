@@ -1,0 +1,204 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+
+    box-sizing: border-box;
+}
+
+:root {
+    --headerColor: #64B5F6; /* Este color también se usa para botón*/
+    --mainColor: #F5F5F5;
+    --mainButtonColor: #FF9800;
+    --canceledButtonColor: #E57373;
+    --mainTextColor: #212121;
+    --darkblueText: #001223;
+    --blankColor: #D9D9D9; /* Color usado en opciones del landing y espacios del Log In y del Sign Up*/
+
+    font-size: 16px;
+}
+
+html, body {
+    height: 100%;
+}
+
+body{
+    background-image: url(../assets/Fondo_register.jpg);
+    background-size: cover;
+    background-position: center;
+    /* background-repeat: no-repeat; */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.body__dark-layer{
+    width: 100%;
+    height: 100%;
+    background-color: #000000a0;
+
+    position: absolute;
+
+    z-index: -1;
+}
+
+
+/* ----------------HEADER SECTION------------------- */
+
+header{
+    display: flex;
+    margin: 80px auto;
+}
+
+header h1{
+    color: var(--blankColor);
+    /*Usar una unidad relativa para el tam deseado*/
+    font-size: clamp(2.6rem, 10vw, 2.8rem);
+}
+
+
+/*------------HEADER QUERIES------------*/
+@media screen and (min-width: 820px) {
+    body{
+        background-position: initial;
+        display: grid;
+        grid-template-columns: 1fr 40vw;
+    }
+
+    header, main{
+        grid-column: 2;
+
+        background-color: #ffffff;
+    }
+
+    header{
+        justify-content: center;
+        margin: 0;
+    }
+
+    .header__title-container{
+        
+        margin: 12px 0 0 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        max-height: 130px;
+        padding: 8px 30px;
+        border-bottom: 2px solid var(--darkblueText);
+        border-right: 2px solid var(--darkblueText);
+        border-bottom-right-radius: 20px;
+    }
+
+    header h1{
+        color: var(--darkblueText);
+    }
+}    
+
+
+/* ----------------MAIN SECTION------------------- */
+
+
+.register, .logIn{
+    background-color: #FFFFFF;
+    width: 100%;
+
+    padding: 60px 25px;
+
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+}
+
+.register__inputs-container, .logIn__inputs-container{
+    display: flex;
+    flex-direction: column;
+
+    margin: 0 0 60px 0;
+}
+
+.register__inputs-container label, .logIn__inputs-container label, button{
+    font-size: 1.3rem;
+    font-weight: 600;
+
+    color: var(--mainTextColor);
+}
+
+.register__inputs-container input, .logIn__inputs-container input{
+    margin-top: 25px;
+    height: 45px;
+    background-color: var(--blankColor);
+
+    border-radius: 16px;
+    border: none;
+
+    padding: 0 14px;
+}
+
+.register__buttons-container, .logIn__buttons-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.register__buttons, .logIn__buttons{
+    padding: 12px 37px;
+    border-radius: 14px;
+    border: none;
+
+    background-color: var(--canceledButtonColor);
+
+    cursor: pointer;
+    transition: box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.register__buttons:nth-child(2), .logIn__buttons:nth-child(2){
+    background-color: var(--headerColor);
+}
+
+button{
+    text-shadow: 1px 4px 4px #00000058;
+    /* text-shadow: 1px 2px 4px red; */
+}
+
+
+/*------------MAIN QUERIES------------*/
+@media screen and (min-width: 820px) {
+    .register, .logIn{
+        height: 79vh;
+        width: 40vw;
+
+        padding: 30px 42px;
+
+        border-radius: 0;
+    }
+
+    .register__inputs-container, .logIn__inputs-container{
+        margin: 0 0 30px 0;
+    }
+
+    .register__inputs-container label, .logIn__inputs-container label, button{
+        font-size: 1rem;
+        font-weight: 600;
+
+        color: var(--mainTextColor);
+    }
+
+    .register__inputs-container input, .logIn__inputs-container input{
+        margin-top: 15px;
+    }
+
+    .register__buttons:hover, .logIn__buttons:hover{
+        filter: drop-shadow(0px 0px px var(--canceledButtonColor)); 
+        /*Para que sobresalga el color del botón*/
+        background-color: #f76150;
+        box-shadow: 1px 1px 12px #f76150;
+    }
+
+    .register__buttons:nth-child(2):hover, .logIn__buttons:nth-child(2):hover{
+        filter: drop-shadow(0px 0px px var(--headerColor)); 
+        /*Para que sobresalga el color del botón*/
+        background-color: #47a8f3;
+        box-shadow: 1px 1px 12px #47a8f3;
+    }
+}

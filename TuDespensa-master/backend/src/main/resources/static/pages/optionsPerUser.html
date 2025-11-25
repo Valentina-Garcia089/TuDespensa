@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido a TuDespensa</title>
+
+    <link rel="stylesheet" href="../styles/landingStyles.css">
+    <link rel="stylesheet" href="../styles/optionsUserStyles.css">
+
+    <!-- Tipografia -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+    <header>
+        <div class="header__logo1-container">
+            <img src="../../public/Logo1.png" alt="Logo #1 de la página" class="header__logo1">
+        </div>
+
+        <div class="header__right-section">
+
+            <div style="position: relative; margin-right: 15px;">
+                <button id="notification-btn" class="header__profile-button"
+                    style="background: #3498db; border: none; cursor: pointer; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative;">
+                    <span style="color: white; font-weight: bold; font-size: 18px;">🔔</span>
+                    <span id="notification-badge"
+                        style="display: none; position: absolute; top: -5px; right: -5px; background: red; color: white; border-radius: 50%; padding: 2px 6px; font-size: 10px; min-width: 20px; text-align: center;">0</span>
+                </button>
+                <div id="notification-dropdown"
+                    style="display: none; position: absolute; top: 45px; right: 0; width: 300px; background: white; border: 1px solid #ddd; border-radius: 5px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 100;">
+                    <h4 style="margin: 0; padding: 10px; border-bottom: 1px solid #eee; background: #f9f9f9;">
+                        Notificaciones</h4>
+                    <ul id="notification-list"
+                        style="list-style: none; margin: 0; padding: 0; max-height: 300px; overflow-y: auto;">
+                        <li style="padding: 15px; text-align: center; color: #888;">Cargando...</li>
+                    </ul>
+                </div>
+            </div>
+
+            <button id="open-profile-options" class="header__profile-button">
+                <img src="../assets/user.png" alt="Abrir menú" class="header__profile-icon">
+            </button>
+
+            <nav class="header__user-menu">
+                <ul class="header__user-list">
+                    <li class="header__user-option">
+                        <a href="register.html">Configuración</a>
+                    </li>
+                    <li class="header__user-option">
+                        <a href="logIn.html">Cerrar Sesión</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1>👋Hola [Usuario]</h1>
+        <h3>¿Que quieres hacer hoy?</h3>
+
+        <section class="options__container">
+            <button type="button" class="options__button" id="list-btn">
+                <img src="../assets/lista_userOptions.svg" alt="">
+                <p>Ver mi lista</p>
+            </button>
+            <button type="button" class="options__button" id="order-history-btn">
+                <img src="../assets/carrito_userOptions.svg" alt="">
+                <p>Historial de compras</p>
+            </button>
+            <button type="button" class="options__button" id="payment-btn">
+                <img src="../assets/money_userOptions.svg" alt="">
+                <p>Actualizar método de pago</p>
+            </button>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer__logo2-container">
+            <img src="../../public/Logo2.svg" alt="" class="footer__logo2">
+        </div>
+
+        <div class="footer__options-container">
+            <div class="footer__options">
+                <a href="#">Politicas de privacidad</a>
+            </div>
+            <div class="footer__options">
+                <a href="#">Términos y condiciones</a>
+            </div>
+            <div class="footer__options">
+                <a href="#">Contacto</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../scripts/landingScript.js"></script>
+    <script src="../scripts/optionsPerUserScript.js"></script>
+</body>
+
+</html>

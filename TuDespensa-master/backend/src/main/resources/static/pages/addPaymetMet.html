@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagos</title>
+    <link rel="stylesheet" href="../styles/regProductStyles.css">
+    <link rel="stylesheet" href="../styles/addPaymentStyles.css">
+
+
+    <!-- Tipografia -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="dark__layer"></div>
+    <header>
+        <button type="button" class="return__button" id="return-btn">
+            <img src="../assets/backButton.png" alt="Botón para volver a la página anterior">
+        </button>
+    </header>
+
+    <main>
+        <div class="actual__method-container">
+            <label for="actual-method">Métodos disponibles</label>
+            <div class="actual__method" id="actual-method">
+                <!-- Aqui se muestra el método de pago actual -->
+            </div>
+        </div>
+
+        <!-- SELECT & OPTION -->
+        <div class="method__select-container">
+            <div class="method__select-value">
+                <span>Método de pago existente</span>
+                <img src="../assets/up-arroww.png">
+            </div>
+
+            <ul class="dropdown-list">
+                <!-- Aqui se van a agregar los métodos de pago ya creados -->
+            </ul>
+        </div>
+
+
+        <button class="add__method-btn" id="add-method-btn">
+            <img src="../assets/addButton.png" alt="Botón para añadir un nuevo método de pago">
+            <span>Nuevo método de pago</span>
+        </button>
+
+        <div class="options__container" id="hidden-options">
+            <div class="return__btn-container">
+                <button class="return__button2">
+                    <img src="../assets/backButton.png" alt="Botón para volver a la página anterior">
+                </button>
+                <span>Métodos de pago</span>
+            </div>
+
+            <p>Estas son las opciones que usted presenta para agregar un nuevo método de pago:</p>
+
+            <div class="options">
+                <button class="individual__option-container" id="credit__card-btn">
+                    <img src="../assets/credit-card.png" alt="Tarjeta de crédito">
+                    <span class="individual__option">Agregar tarjeta de crédito o débito</span>
+                </button>
+
+                <button class="individual__option-container">
+                    <img src="../assets/cash.png" alt="Efectivo">
+                    <span class="individual__option">Efectivo</span>
+                </button>
+            </div>
+        </div>
+
+        <form class="form__container2" id="hidden-method">
+            <div class="return__btn-container">
+                <button class="return__button2">
+                    <img src="../assets/backButton.png" alt="Botón para volver a la página anterior">
+                </button>
+                <span>Agregar tarjeta de crédito o de débito</span>
+            </div>
+
+            <div class="form__input-container">
+                <div class="form__input-separator">
+                    <fieldset class="form__input">
+                        <legend>Número de tarjeta</legend>
+                        <img src="../assets/credit-card.png" alt="Tarjeta de crédito">
+                        <input type="number">
+                    </fieldset>
+                </div>
+
+
+                <div class="form__input-separator two">
+                    <fieldset class="form__input iTwo">
+                        <legend>mm/dd/yyyy</legend>
+                        <input type="date" class="form__input">
+                    </fieldset>
+                </div>
+
+                <div class="form__input-separator three">
+                    <fieldset class="form__input iThree">
+                        <legend>Código de seguridad</legend>
+                        <input type="number">
+                    </fieldset>
+                </div>
+
+            </div>
+            <button type="submit" class="payment__btn">Guardar tarjeta</button>
+        </form>
+    </main>
+
+    <script src="../scripts/addPaymentScript.js"></script>
+</body>
+
+</html>
