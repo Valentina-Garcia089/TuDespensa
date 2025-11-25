@@ -37,26 +37,39 @@ public class PedidoController {
     private ProductoUsuarioRepository productoUsuarioRepository;
 
     @PostMapping
+    @org.springframework.transaction.annotation.Transactional
     public Pedido crear(@RequestBody PedidoRequest request) {
         System.out.println("=== CREANDO PEDIDO ===");
         System.out.println("Request: " + request);
         
         try {
             // Recuperar entidades
+            if (request.getIdUsuario() == null) {
+                throw new RuntimeException("El ID de usuario es obligatorio");
+            }
             Usuario usuario = usuarioRepository.findById(request.getIdUsuario())
                     .orElseThrow(() -> new RuntimeException("Usuario no encontrado: " + request.getIdUsuario()));
             System.out.println("Usuario encontrado: " + usuario.getNombre());
             
+            if (request.getIdSupermercado() == null) {
+                throw new RuntimeException("El ID de supermercado es obligatorio");
+            }
             Supermercado supermercado = supermercadoRepository.findById(request.getIdSupermercado())
                     .orElseThrow(() -> new RuntimeException("Supermercado no encontrado: " + request.getIdSupermercado()));
             System.out.println("Supermercado encontrado: " + supermercado.getNombreSupermercado());
             
-            MetodoPago metodoPago = metodoPagoRepository.findById(request.getIdMetodoPago())
-                    .orElseThrow(() -> new RuntimeException("Método de pago no encontrado: " + request.getIdMetodoPago()));
-            System.out.println("Método de pago encontrado: " + metodoPago.getTipoPago());
+            MetodoPago metodoPago = null;
+            if (request.getIdMetodoPago() != null) {
+                metodoPago = metodoPagoRepository.findById(request.getIdMetodoPago())
+                        .orElseThrow(() -> new RuntimeException("Método de pago no encontrado: " + request.getIdMetodoPago()));
+                System.out.println("Método de pago encontrado: " + metodoPago.getTipoPago());
+            } else {
+                System.out.println("Método de pago es nulo (posiblemente Efectivo)");
+            }
 
             List<ProductoSupermercado> productos = new ArrayList<>();
             List<Integer> cantidades = new ArrayList<>();
+            List<String> errores = new ArrayList<>();
 
             if (request.getDetalles() != null) {
                 System.out.println("Procesando " + request.getDetalles().size() + " detalles");
@@ -81,38 +94,55 @@ public class PedidoController {
                         System.out.println("Equivalentes encontrados: " + equivalentes.size());
                         if (!equivalentes.isEmpty()) {
                             prod = equivalentes.get(0); // Tomamos el primero que coincida
-                            System.out.println("Producto equivalente seleccionado: " + prod.getNombreProducto());
+                            System.out.println("✓ Producto encontrado: " + prod.getNombreProducto() + " " + prod.getMarca());
                         } else {
-                            System.out.println("WARNING: No se encontró producto equivalente en supermercado para: " + prodUsuario.getNombreProducto());
+                            String msg = "❌ No se encontró el producto '" + prodUsuario.getNombreProducto() + 
+                                       " - " + prodUsuario.getMarca() + "' en el supermercado '" + 
+                                       supermercado.getNombreSupermercado() + "'. " +
+                                       "Verifica que el producto exista en este supermercado o intenta con otro.";
+                            System.out.println(msg);
+                            errores.add(msg);
+                            continue; // Skip to next product
                         }
                     }
 
-                    // 2. Si no se encontró como ProductoUsuario o no hubo match, buscar como ID directo de ProductoSupermercado
-                    if (prod == null) {
-                        System.out.println("Intentando buscar como ProductoSupermercado directo...");
-                        prod = productoSupermercadoRepository.findById(det.getIdProducto()).orElse(null);
-                        if (prod != null) {
-                            System.out.println("ProductoSupermercado encontrado directamente: " + prod.getNombreProducto());
+                    // 2. Validación (SIN actualizar stock todavía)
+                    if (prod != null) {
+                        if (prod.getCantidadDisponible() < det.getCantidad()) {
+                            String msg = "Stock insuficiente para: " + prod.getNombreProducto() + " " + prod.getMarca() +
+                                         " (Solicitado: " + det.getCantidad() + ", Disponible: " + prod.getCantidadDisponible() + ")";
+                            System.out.println("⚠️ " + msg);
+                            errores.add(msg);
+                        } else {
+                            // Solo agregamos a las listas temporales
+                            productos.add(prod);
+                            cantidades.add(det.getCantidad());
                         }
                     }
-                    
-                    if (prod != null) {
-                        productos.add(prod);
-                        cantidades.add(det.getCantidad());
-                        System.out.println("Producto agregado al pedido: " + prod.getNombreProducto());
-                    } else {
-                        System.out.println("ERROR: No se pudo encontrar producto con ID: " + det.getIdProducto());
-                    }
                 }
+            }
+            
+            if (!errores.isEmpty()) {
+                String errorCompleto = String.join("\n", errores);
+                System.err.println("\n❌❌❌ ERRORES AL CREAR PEDIDO ❌❌❌\n" + errorCompleto);
+                throw new RuntimeException("No se pudo crear el pedido:\n\n" + errorCompleto);
             }
             
             if (productos.isEmpty()) {
                 throw new RuntimeException("No se encontraron productos válidos para el pedido. Asegúrese de que los productos existan en el supermercado seleccionado.");
             }
-            
+
+            // 3. Actualizar stock y crear pedido (Solo si no hubo errores)
+            for (int i = 0; i < productos.size(); i++) {
+                ProductoSupermercado p = productos.get(i);
+                Integer cant = cantidades.get(i);
+                p.setCantidadDisponible(p.getCantidadDisponible() - cant);
+                productoSupermercadoRepository.save(p);
+            }
+
             System.out.println("Total de productos a agregar al pedido: " + productos.size());
             Pedido pedido = gestorPedidos.crearPedido(usuario, supermercado, metodoPago, productos, cantidades);
-            System.out.println("Pedido creado exitosamente con ID: " + pedido.getIdPedido());
+            System.out.println("✅ Pedido creado exitosamente con ID: " + pedido.getIdPedido());
             return pedido;
             
         } catch (Exception e) {

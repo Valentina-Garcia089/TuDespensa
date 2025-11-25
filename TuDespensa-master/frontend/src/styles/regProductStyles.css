@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     font-family: "Montserrat", sans-serif;
@@ -6,13 +6,15 @@
 }
 
 :root {
-    --headerColor: #64B5F6; /* Este color también se usa para botón*/
+    --headerColor: #64B5F6;
+    /* Este color también se usa para botón*/
     --mainColor: #F5F5F5;
     --mainButtonColor: #FF9800;
     --canceledButtonColor: #E57373;
     --mainTextColor: #212121;
     --darkblueText: #001223;
-    --blankColor: #D9D9D9; /* Color usado en opciones del landing y espacios del Log In y del Sign Up*/
+    --blankColor: #D9D9D9;
+    /* Color usado en opciones del landing y espacios del Log In y del Sign Up*/
 
     --notesColor: #E6F4EA;
     --purchaseHistoryColor: #FFF9C4;
@@ -27,7 +29,7 @@ body {
     background-color: var(--notesColor);
 }
 
-.dark__layer{
+.dark__layer {
     position: fixed;
     top: 0;
     left: 0;
@@ -50,7 +52,7 @@ body {
 
 /* ----------------HEADER SECTION------------------- */
 
-header{
+header {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -59,8 +61,9 @@ header{
     border-bottom: 1px solid var(--darkblueText);
 }
 
-.return__button{
-    /* margin: auto; */ /*Centra a lo ancho del header*/
+.return__button {
+    /* margin: auto; */
+    /*Centra a lo ancho del header*/
     position: fixed;
     left: 2%;
     display: grid;
@@ -75,7 +78,7 @@ header{
     cursor: pointer;
 }
 
-.return__button img{
+.return__button img {
     width: 170%;
 }
 
@@ -85,12 +88,12 @@ header{
 
 /* ----------------MAIN SECTION------------------- */
 
-.list__container{
+.list__container {
     padding: 0 36px;
 }
 
-.listOfProducts{
-    list-style:none;
+.listOfProducts {
+    list-style: none;
     margin-top: 10px;
     display: flex;
     flex-direction: column;
@@ -101,26 +104,28 @@ header{
     background: white;
     border-radius: 12px;
     padding: 12px 16px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .listOfProducts li:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
-.product__item-content{
+.product__item-content {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.product-checkbox{
+.product-checkbox {
     margin-right: 8px;
 }
 
-.list__delete-button, .list__add-button, .list__edit-button {
+.list__delete-button,
+.list__add-button,
+.list__edit-button {
     position: fixed;
     bottom: 140px;
     right: 5%;
@@ -129,7 +134,7 @@ header{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    
+
     width: 80px;
     height: 80px;
 
@@ -139,34 +144,35 @@ header{
     cursor: pointer;
 }
 
-.list__delete-button, .list__edit-button{
+.list__delete-button,
+.list__edit-button {
     display: none;
 }
 
-.list__delete-button img{
+.list__delete-button img {
     width: 75%;
 }
 
-.list__edit-button{
+.list__edit-button {
     bottom: 255px;
     background-color: var(--mainButtonColor);
 }
 
-.list__edit-button img{
+.list__edit-button img {
     width: 80%;
 }
 
 
-.list__add-button{
+.list__add-button {
     bottom: 25px;
     background-color: var(--purchaseHistoryColor);
 }
 
-.list__add-button img{
+.list__add-button img {
     width: 130%
 }
 
-.form__container{
+.form__container {
     display: flex;
     flex-direction: column;
     /* max-height: 75vh; */
@@ -197,10 +203,11 @@ header{
     transform: translate(-50%, -50%);
 }
 
-.product__form{
+.product__form {
     display: flex;
     flex-direction: column;
-    gap: 10px; /*Espacio entre divs de inputs*/
+    gap: 10px;
+    /*Espacio entre divs de inputs*/
     padding: 30px;
 
     max-height: 75vh;
@@ -208,11 +215,11 @@ header{
     scrollbar-width: thin;
 }
 
-.product__input-same-row{
+.product__input-same-row {
     gap: 20px;
 }
 
-.product__form-close-button{
+.product__form-close-button {
     align-self: flex-end;
     /* background-color: red; */
 
@@ -224,41 +231,43 @@ header{
     cursor: pointer;
 }
 
-.product__form-close-button img{
+.product__form-close-button img {
     position: relative;
     right: -5px;
     width: 100%;
     cursor: pointer;
 }
 
-.product__input-container{
+.product__input-container {
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
 }
 
-.product__input-container label{
+.product__input-container label {
     font-weight: 500;
 }
 
-.product__form input{
+.product__form input,
+.product__form select {
     border: none;
     border-radius: 16px;
     padding: 10px 12px;
     margin-top: 10px;
+    background-color: white;
 }
 
-.product__input-same-row{
+.product__input-same-row {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.product__form-submit-button{
+.product__form-submit-button {
     align-self: center;
     margin-top: 10px;
     width: 150px;
-    padding:10px 12px;
+    padding: 10px 12px;
     border: none;
     border-radius: 14px;
     font-weight: bold;
@@ -283,7 +292,7 @@ header{
 
 
 /* --------------------------------------------------- */
-.order__summary-btn{
+.order__summary-btn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -303,14 +312,14 @@ header{
     transition: border-radius 0.3s ease, width 0.3s ease;
 }
 
-.order__summary-btn:hover{
+.order__summary-btn:hover {
     width: 135px;
     border-radius: 1000px;
     /* border-radius: 40px; */
 }
 
 /* Imagen: se mueve a la izquierda cuando aparece el span */
-.order__summary-btn img{
+.order__summary-btn img {
     transition: transform 0.4s ease 0.1s;
 }
 
@@ -318,7 +327,7 @@ header{
     transform: translateX(-5px);
 }
 
-.order__summary-btn span{
+.order__summary-btn span {
     position: absolute;
     font-size: 1rem;
     font-weight: 500;
@@ -330,7 +339,7 @@ header{
 }
 
 /* Si se pasa el cursor por encima del botón, afectará al span */
-.order__summary-btn:hover span{
+.order__summary-btn:hover span {
     position: sticky;
     opacity: 1;
     transform: translateX(0);
@@ -340,7 +349,7 @@ header{
 
 
 /*Esto debe estar oculto hasta que el usuario presione el botón para ver el resumen del pedido*/
-.order__summary-container{
+.order__summary-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -357,28 +366,28 @@ header{
     z-index: 20;
 }
 
-.order__summary-container.open{
+.order__summary-container.open {
     visibility: visible;
     opacity: 1;
     transform: translate(-50%, -50%);
 }
 
-.order__summary-card{
+.order__summary-card {
     background-color: #fff;
     border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     padding: 2.1rem;
     max-width: 600px;
     width: 100%;
 }
 
-.order__summary-card h2{
+.order__summary-card h2 {
     text-align: center;
     margin-bottom: 0.8rem;
     color: var(--darkblueText);
 }
 
-.order__summary-header{
+.order__summary-header {
     display: grid;
 
     grid-template-columns: 2fr 1fr 2fr 1fr;
@@ -389,15 +398,16 @@ header{
     gap: 40px;
 }
 
-.order__summary-body{
+.order__summary-body {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem; /*Entre cada fila*/
+    gap: 0.5rem;
+    /*Entre cada fila*/
     margin-top: 0.8rem;
 }
 
 /*Este será el div agregado en JS*/
-.order__summary-row{
+.order__summary-row {
     display: grid;
 
     grid-template-columns: 2fr 1fr 2fr 1fr;
@@ -407,30 +417,33 @@ header{
     gap: 40px;
 }
 
-.order__summary-supplier, .order__summary-total{
+.order__summary-supplier,
+.order__summary-total {
     margin: 0.8rem 0;
     display: grid;
     grid-template-columns: 2fr 2fr;
 }
 
-.order__supplier{
+.order__supplier {
     color: var(--darkblueText);
     font-weight: 500;
 }
 
-.order__supplier-name, #order-total{
+.order__supplier-name,
+#order-total {
     text-align: end;
     color: var(--mainTextColor);
 }
 
-.order__summary-actions{
+.order__summary-actions {
     display: flex;
     justify-content: flex-end;
     gap: 1rem;
     padding: 1.2rem 0 0 0;
 }
 
-.order__btn, .payment__btn{
+.order__btn,
+.payment__btn {
     /* background-color: var(--mainButtonColor); */
     padding: 0.6rem 0.9rem;
     border-style: none;
@@ -442,17 +455,22 @@ header{
     /* Transición para los botones */
     position: relative;
     border: 1px solid var(--mainButtonColor);
-    overflow: hidden; /*Con esto el before no sobre sale*/
+    overflow: hidden;
+    /*Con esto el before no sobre sale*/
     color: var(--mainTextColor);
     z-index: 0;
 }
 
-.order__btn.cancel{
+.order__btn.cancel {
     border: 1px solid var(--canceledButtonColor);
 }
 
-.order__btn.cancel::before, .order__btn.confirm::before, .product__form-submit-button::before, .payment__btn::before {
-    content: ""; /*USAR ESTO SIEMPRE AUNQUE ESTÉ VACIO*/
+.order__btn.cancel::before,
+.order__btn.confirm::before,
+.product__form-submit-button::before,
+.payment__btn::before {
+    content: "";
+    /*USAR ESTO SIEMPRE AUNQUE ESTÉ VACIO*/
     background-color: var(--canceledButtonColor);
     display: block;
     height: 200%;
@@ -467,11 +485,16 @@ header{
     z-index: -1;
 }
 
-.order__btn.confirm::before, .product__form-submit-button::before, .payment__btn::before{
+.order__btn.confirm::before,
+.product__form-submit-button::before,
+.payment__btn::before {
     background-color: var(--mainButtonColor);
 }
 
-.order__btn.cancel:hover::before, .order__btn.confirm:hover::before,  .product__form-submit-button:hover:before, .payment__btn:hover::before{
+.order__btn.cancel:hover::before,
+.order__btn.confirm:hover::before,
+.product__form-submit-button:hover:before,
+.payment__btn:hover::before {
     content: "";
     top: -26%;
     left: -20%;
@@ -488,18 +511,17 @@ header{
     }
 
     /*ajustar el tamaño de las columnas para que no se rompa el layout en dispositivos mas pequeños*/
-    .order__summary-header, .order__summary-row {
+    .order__summary-header,
+    .order__summary-row {
         grid-template-columns: 1.3fr 1fr 1fr 1fr;
         gap: 12px;
     }
 
-    .order__summary-header span, .order__summary-row span {
+    .order__summary-header span,
+    .order__summary-row span {
         font-size: 0.82rem;
-        word-wrap: break-word; /*Romper la palabra para que quedpa en el contenedor*/
+        word-wrap: break-word;
+        /*Romper la palabra para que quedpa en el contenedor*/
         overflow-wrap: break-word;
     }
 }
-
-
-
-

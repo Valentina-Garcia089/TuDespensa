@@ -104,15 +104,46 @@ document.addEventListener("DOMContentLoaded", () => {
                     methods.forEach(method => {
                         const li = document.createElement("li");
                         li.classList.add("dropdown-item");
+                        li.style.display = "flex";
+                        li.style.justifyContent = "space-between";
+                        li.style.alignItems = "center";
+
                         const displayText = method.ultimosDigitos ? `Tarjeta •••• ${method.ultimosDigitos}` : method.tipoPago;
-                        li.textContent = displayText;
+
+                        const textSpan = document.createElement("span");
+                        textSpan.textContent = displayText;
+
+                        // Botón de eliminar
+                        const deleteBtn = document.createElement("button");
+                        deleteBtn.innerHTML = "Eliminar";
+                        deleteBtn.style.backgroundColor = "#ff4444"; // Rojo
+                        deleteBtn.style.color = "white";
+                        deleteBtn.style.border = "none";
+                        deleteBtn.style.borderRadius = "4px";
+                        deleteBtn.style.padding = "5px 10px";
+                        deleteBtn.style.cursor = "pointer";
+                        deleteBtn.style.fontSize = "0.9em";
+                        deleteBtn.style.marginLeft = "10px";
+                        deleteBtn.title = "Eliminar método de pago";
+
+                        deleteBtn.addEventListener("click", (e) => {
+                            e.stopPropagation(); // Evitar seleccionar el item al borrar
+                            if (confirm("¿Estás seguro de eliminar este método de pago?")) {
+                                deletePaymentMethod(method.idMetodoPago);
+                            }
+                        });
+
+                        li.appendChild(textSpan);
+                        li.appendChild(deleteBtn);
 
                         // Restaurar selección
-                        li.addEventListener("click", () => {
+                        li.addEventListener("click", (e) => {
+                            // Si el click fue en el botón, no hacemos nada (ya manejado)
+                            if (e.target === deleteBtn) return;
+
                             currentMethodDisplay.textContent = displayText;
                             currentMethodDisplay.style.color = '#212121';
                             dropdown.classList.remove("open");
-                            // Aquí se podría guardar el ID del método seleccionado para eliminarlo después
                             currentMethodDisplay.dataset.selectedId = method.idMetodoPago;
                         });
 
@@ -132,6 +163,27 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
                 dropdown.appendChild(liCash);
             });
+    }
+
+    function deletePaymentMethod(id) {
+        fetch(`http://localhost:8080/metodos-pago/${id}`, {
+            method: "DELETE"
+        })
+            .then(res => {
+                if (res.ok) {
+                    alert("Método de pago eliminado");
+                    loadPaymentMethods(); // Recargar lista
+                    // Resetear selección si era el eliminado
+                    if (currentMethodDisplay.dataset.selectedId == id) {
+                        currentMethodDisplay.textContent = "Métodos disponibles";
+                        currentMethodDisplay.style.color = '#363535c1';
+                        delete currentMethodDisplay.dataset.selectedId;
+                    }
+                } else {
+                    alert("Error al eliminar el método de pago");
+                }
+            })
+            .catch(err => console.error("Error deleting payment method:", err));
     }
 
     if (usuarioId) {
@@ -197,7 +249,7 @@ window.guardarNuevoMetodoPago = function (usuarioId, cardNumber) {
 
     const nuevoMetodo = {
         usuario: { idUsuario: usuarioId },
-        tipoPago: "Tarjeta Crédito/Débito",
+        tipoPago: "Tarjeta Crédito",
         ultimosDigitos: cardNumber.slice(-4),
         activo: true
     };
@@ -217,10 +269,10 @@ window.guardarNuevoMetodoPago = function (usuarioId, cardNumber) {
         })
         .catch(err => {
             console.error(err);
+            // Mostrar el error real para depurar
+            alert("Error al guardar: " + err.message);
             if (err.message.includes("integridad de datos") || err.message.includes("usuario")) {
-                alert("Error: No se pudo identificar al usuario. Por favor inicie sesión nuevamente.");
-            } else {
-                alert("Error al guardar el método de pago: " + err.message);
+                // Opcional: redirigir si es crítico, pero primero mostrar el error
             }
             throw err;
         });

@@ -38,15 +38,18 @@ public class AuthController {
             }
             
             // Verificar si el correo ya existe
+            System.out.println("Checking existence for email: [" + usuario.getCorreo() + "]"); // DEBUG
             if (usuarioService.existeCorreo(usuario.getCorreo())) {
+                System.out.println("Email already exists: " + usuario.getCorreo()); // DEBUG
                 return ResponseEntity.badRequest().body(Map.of("message", "El correo ya está registrado"));
             }
             
             Usuario nuevo = usuarioService.registrarUsuario(usuario);
             return ResponseEntity.ok(Map.of("message", "Usuario registrado", "id", nuevo.getIdUsuario()));
         } catch (org.springframework.dao.DataIntegrityViolationException e) {
-            // Capturar violaciones de constraint (ej: correo duplicado)
-            return ResponseEntity.badRequest().body(Map.of("message", "El correo ya está registrado"));
+            // Capturar violaciones de constraint
+            e.printStackTrace(); // Log para ver el error real
+            return ResponseEntity.badRequest().body(Map.of("message", "Error de integridad de datos: " + e.getMostSpecificCause().getMessage()));
         } catch (Exception e) {
             e.printStackTrace(); // Log para debugging
             return ResponseEntity.badRequest().body(Map.of("message", "Error al registrar. Por favor intenta con otro correo."));
@@ -58,11 +61,19 @@ public class AuthController {
         String correo = credenciales.get("correo");
         String contrasena = credenciales.get("contrasena");
 
+        // System.out.println("Login attempt: " + correo + " | Password: " + contrasena); // DEBUG
+
         Optional<Usuario> usuario = usuarioService.login(correo, contrasena);
         if (usuario.isPresent()) {
             return ResponseEntity.ok(usuario.get());
         } else {
+            System.out.println("Login failed for: " + correo); // DEBUG
             return ResponseEntity.status(401).body(Map.of("message", "Credenciales inválidas"));
         }
+    }
+
+    @GetMapping("/debug/users")
+    public ResponseEntity<?> debugUsers() {
+        return ResponseEntity.ok(usuarioService.listarTodos());
     }
 }

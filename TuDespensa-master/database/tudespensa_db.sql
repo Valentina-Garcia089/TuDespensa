@@ -101,7 +101,7 @@ CREATE TABLE historial_notificaciones (
     respuesta_usuario VARCHAR(50),
     fecha_respuesta TIMESTAMP,
     FOREIGN KEY (id_producto_usuario) REFERENCES producto_usuario(id_producto_usuario) ON DELETE CASCADE,
-    CONSTRAINT chk_tipo_notif CHECK (tipo_notificacion IN ('Recordatorio', 'Producto Agotado', 'Lista Disponible'))
+    CONSTRAINT chk_tipo_notif CHECK (tipo_notificacion IN ('Recordatorio', 'Producto Agotado', 'Lista Disponible', 'PEDIDO_CREADO'))
 );
 
 -- ============================================

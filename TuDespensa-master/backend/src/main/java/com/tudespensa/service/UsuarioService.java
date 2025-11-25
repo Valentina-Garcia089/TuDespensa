@@ -36,4 +36,8 @@ public class UsuarioService {
     public boolean existeCorreo(String correo) {
         return usuarioRepository.existsByCorreo(correo);
     }
+
+    public java.util.List<Usuario> listarTodos() {
+        return usuarioRepository.findAll();
+    }
 }

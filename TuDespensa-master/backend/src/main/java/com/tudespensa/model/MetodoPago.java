@@ -29,7 +29,7 @@ public class MetodoPago {
     @Column(name = "nombre_titular", length = 150)
     private String nombreTitular;
 
-    @Column(name = "numero_tarjeta_encriptado")
+    @Column(name = "numero_tarjeta_encriptado", nullable = true)
     private String numeroTarjetaEncriptado;
 
     @Pattern(regexp = "\\d{4}", message = "Debe tener exactamente 4 dígitos numéricos")

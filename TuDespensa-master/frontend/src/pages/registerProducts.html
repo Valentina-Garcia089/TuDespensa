@@ -51,24 +51,31 @@
 
                     <div class="product__input-container">
                         <label for="product-brand">Marca</label>
-                        <input type="marca" class="product__form-brand" id="porduct-brand" required>
+                        <input type="marca" class="product__form-brand" id="product-brand" required>
                     </div>
 
                     <div class="product__input-same-row">
                         <div class="product__input-container">
                             <label for="product-quantity">Cantidad</label>
-                            <input type="number" class="product__form-quantity" id="product-quantity" required>
+                            <input type="number" class="product__form-quantity" id="product-quantity" required min="1">
                         </div>
 
                         <div class="product__input-container">
                             <label for="product-measurement">Unidad de medida</label>
-                            <input type="text" class="product__form-measurement" id="product-measurement" required>
+                            <select class="product__form-measurement" id="product-measurement" required>
+                                <option value="unidades">Unidades</option>
+                                <option value="kg">Kilogramos (kg)</option>
+                                <option value="gramos">Gramos (g)</option>
+                                <option value="litros">Litros (L)</option>
+                                <option value="ml">Mililitros (ml)</option>
+                                <option value="paquetes">Paquetes</option>
+                            </select>
                         </div>
                     </div>
 
                     <div class="product__input-container">
                         <label for="product-frequency">Frecuencia de reposición (Días)</label>
-                        <input type="number" class="product__form-frequency" id="product-frequency">
+                        <input type="number" class="product__form-frequency" id="product-frequency" min="1">
                     </div>
 
                     <div class="product__input-container">
@@ -104,9 +111,24 @@
                     <!-- Por cada producto (fila), habrá un div de row -->
                 </div>
 
+                <div class="order__summary-supermarket"
+                    style="margin: 15px 0; padding: 10px; background-color: #f9f9f9; border-radius: 8px;">
+                    <label for="supermarket-select" style="display: block; margin-bottom: 5px; font-weight: bold;">🏪
+                        Selecciona supermercado:</label>
+                    <select id="supermarket-select"
+                        style="width: 100%; padding: 8px; font-size: 14px; border: 1px solid #ddd; border-radius: 4px;">
+                        <option value="1">Éxito - Calle 100 #10-20, Bogotá</option>
+                        <option value="2">Carulla - Carrera 15 #85-30, Bogotá</option>
+                        <option value="3">Jumbo - Centro Comercial Santa Fe</option>
+                    </select>
+                    <div style="margin-top: 5px; color: #666; font-size: 12px;">
+                        📞 <span id="supermarket-phone">3001234567</span>
+                    </div>
+                </div>
+
                 <div class="order__summary-supplier">
                     <span class="order__supplier-tag">Proveedor</span>
-                    <span class="order__supplier-name" id="supplier-name"></span>
+                    <span class="order__supplier-name" id="supplier-name">Éxito</span>
                 </div>
 
                 <div class="order__summary-payment" style="margin: 15px 0; padding: 10px; border-top: 1px solid #eee;">
@@ -118,9 +140,23 @@
                     </select>
                 </div>
 
-                <div class="order__summary-total">
-                    <span>Total estimado</span>
-                    <strong id="order-total">$0</strong>
+                <div class="order__summary-totals"
+                    style="margin-top: 15px; padding-top: 10px; border-top: 2px solid #eee;">
+                    <div class="order__total-row"
+                        style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                        <span>Subtotal:</span>
+                        <span id="order-subtotal">$0</span>
+                    </div>
+                    <div class="order__total-row"
+                        style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                        <span>IVA (19%):</span>
+                        <span id="order-iva">$0</span>
+                    </div>
+                    <div class="order__total-row"
+                        style="display: flex; justify-content: space-between; font-size: 1.2em; font-weight: bold; margin-top: 10px;">
+                        <span>Total estimado</span>
+                        <strong id="order-total">$0</strong>
+                    </div>
                 </div>
 
                 <div class="order__summary-actions">

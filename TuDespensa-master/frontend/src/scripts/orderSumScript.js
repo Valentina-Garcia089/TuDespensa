@@ -19,8 +19,114 @@ document.addEventListener("DOMContentLoaded", () => {
     const cancelBtn = document.querySelector(".cancel");
     const confirmBtn = document.querySelector(".confirm");
     const summaryBody = document.getElementById("order-summary-body");
+
+    // Nuevos elementos
+    const subtotalLabel = document.getElementById("order-subtotal");
+    const ivaLabel = document.getElementById("order-iva");
     const totalLabel = document.getElementById("order-total");
+
     const paymentSelect = document.getElementById("payment-method-select");
+    const supermarketSelect = document.getElementById("supermarket-select");
+    const supermarketPhone = document.getElementById("supermarket-phone");
+    const supplierName = document.getElementById("supplier-name");
+
+    // Datos de supermercados (simulados por ahora)
+    const supermarkets = {
+        "1": { name: "Éxito", phone: "3001234567" },
+        "2": { name: "Carulla", phone: "3109876543" },
+        "3": { name: "Jumbo", phone: "6012345678" }
+    };
+
+    // Función para actualizar precios según supermercado
+    async function updatePricesForSupermarket(supermercadoId) {
+        const checkedBoxes = document.querySelectorAll(".product-checkbox:checked");
+        if (checkedBoxes.length === 0) return;
+
+        console.log(`Actualizando precios para supermercado ${supermercadoId}`);
+
+        for (const box of checkedBoxes) {
+            const li = box.closest("li");
+            const product = JSON.parse(li.dataset.product);
+
+            try {
+                // Buscar el producto en el supermercado seleccionado
+                const response = await fetch(`http://localhost:8080/productos-supermercado/buscar?supermercado_id=${supermercadoId}&nombre=${encodeURIComponent(product.nombreProducto)}&marca=`);
+
+                if (response.ok) {
+                    const productosSupermercado = await response.json();
+                    if (productosSupermercado.length > 0) {
+                        // Actualizar el precio en el objeto del producto
+                        product.precio = productosSupermercado[0].precio;
+                        // Actualizar el dataset
+                        li.dataset.product = JSON.stringify(product);
+                        console.log(`Precio actualizado para ${product.nombreProducto}: $${product.precio}`);
+                    }
+                }
+            } catch (error) {
+                console.error(`Error obteniendo precio para ${product.nombreProducto}:`, error);
+            }
+        }
+
+        // Recalcular y actualizar los totales si el modal está abierto
+        if (summContainer.classList.contains("open")) {
+            updateModalPrices();
+        }
+    }
+
+    // Función para actualizar precios en el modal abierto
+    function updateModalPrices() {
+        const checkedBoxes = document.querySelectorAll(".product-checkbox:checked");
+        const productsList = [];
+
+        // Limpiar el cuerpo del resumen
+        summaryBody.innerHTML = "";
+
+        checkedBoxes.forEach((box) => {
+            const li = box.closest("li");
+            const product = JSON.parse(li.dataset.product);
+
+            // Asignar precio simulado si no existe
+            if (!product.precio) product.precio = 2500;
+
+            productsList.push(product);
+
+            const row = document.createElement("div");
+            row.classList.add("order__summary-row");
+
+            const cantidad = parseInt(product.cantidad) || 1;
+            const precioTotal = product.precio * cantidad;
+
+            row.innerHTML = `
+                <span>${escapeHtml(product.nombreProducto)}</span>
+                <span>${cantidad}</span>
+                <span>${escapeHtml(product.unidadMedida || "unid")}</span>
+                <span>$${product.precio.toLocaleString()}</span>
+            `;
+            summaryBody.appendChild(row);
+        });
+
+        // Recalcular totales
+        const totals = calculateTotals(productsList);
+
+        if (subtotalLabel) subtotalLabel.textContent = `$${totals.subtotal.toLocaleString()}`;
+        if (ivaLabel) ivaLabel.textContent = `$${totals.iva.toLocaleString()}`;
+        if (totalLabel) totalLabel.textContent = `$${totals.total.toLocaleString()}`;
+    }
+
+    // Evento cambio de supermercado
+    if (supermarketSelect) {
+        supermarketSelect.addEventListener("change", async (e) => {
+            const selectedId = e.target.value;
+            const superData = supermarkets[selectedId];
+            if (superData) {
+                if (supermarketPhone) supermarketPhone.textContent = superData.phone;
+                if (supplierName) supplierName.textContent = superData.name;
+            }
+
+            // Actualizar precios cuando cambia el supermercado
+            await updatePricesForSupermarket(selectedId);
+        });
+    }
 
     // Obtener usuario
     const usuarioStr = localStorage.getItem("usuario");
@@ -43,9 +149,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.log("Métodos de pago cargados:", methods);
 
                 paymentSelect.innerHTML = "";
-                if (methods.length === 0) {
-                    paymentSelect.innerHTML = '<option value="">No hay métodos de pago disponibles</option>';
-                } else {
+
+                // Agregar opción de Efectivo siempre
+                const cashOption = document.createElement("option");
+                cashOption.value = "EFECTIVO"; // Valor especial para efectivo
+                cashOption.textContent = "Efectivo";
+                paymentSelect.appendChild(cashOption);
+
+                if (methods.length > 0) {
                     methods.forEach(method => {
                         const option = document.createElement("option");
                         option.value = method.idMetodoPago;
@@ -63,6 +174,23 @@ document.addEventListener("DOMContentLoaded", () => {
     // Cargar métodos al inicio
     loadPaymentMethods();
 
+    function calculateTotals(products) {
+        let subtotal = 0;
+
+        products.forEach(product => {
+            // Simulamos un precio aleatorio si no viene del backend, o usamos un precio base
+            // En una app real, esto vendría de la base de datos
+            const precioUnitario = product.precio || 2500;
+            const cantidad = parseInt(product.cantidad) || 1;
+            subtotal += precioUnitario * cantidad;
+        });
+
+        const iva = subtotal * 0.19;
+        const total = subtotal + iva;
+
+        return { subtotal, iva, total };
+    }
+
     function openModal() {
         console.log("=== ABRIENDO MODAL DE PEDIDO ===");
 
@@ -77,29 +205,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
         summaryBody.innerHTML = "";
 
+        let productsList = [];
+
         checkedBoxes.forEach((box, index) => {
             const li = box.closest("li");
             const product = JSON.parse(li.dataset.product);
 
+            // Asignar precio simulado si no existe
+            if (!product.precio) product.precio = 2500;
+
+            productsList.push(product);
+
             const row = document.createElement("div");
             row.classList.add("order__summary-row");
 
+            const cantidad = parseInt(product.cantidad) || 1;
+            const precioTotal = product.precio * cantidad;
+
             row.innerHTML = `
                 <span>${escapeHtml(product.nombreProducto)}</span>
-                <span>${parseInt(product.cantidad) || 1}</span>
+                <span>${cantidad}</span>
                 <span>${escapeHtml(product.unidadMedida || "unid")}</span>
-                <span>Ver en confirmación</span>
+                <span>$${product.precio}</span>
             `;
             summaryBody.appendChild(row);
         });
 
-        // Mostrar proveedor (Makro por defecto)
-        const supplierNameElement = document.getElementById("supplier-name");
-        if (supplierNameElement) {
-            supplierNameElement.textContent = "Makro";
-        }
+        // Calcular totales
+        const totals = calculateTotals(productsList);
 
-        totalLabel.textContent = "Ver en confirmación";
+        if (subtotalLabel) subtotalLabel.textContent = `$${totals.subtotal.toLocaleString()}`;
+        if (ivaLabel) ivaLabel.textContent = `$${totals.iva.toLocaleString()}`;
+        if (totalLabel) totalLabel.textContent = `$${totals.total.toLocaleString()}`;
 
         darkLayer.classList.add("active");
         summContainer.classList.add("open");
@@ -143,14 +280,13 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             // Validar método de pago seleccionado
-            const selectedPaymentId = parseInt(paymentSelect.value);
-            if (!selectedPaymentId) {
+            const selectedPaymentValue = paymentSelect.value;
+            if (!selectedPaymentValue) {
                 alert("Por favor seleccione un método de pago");
                 return;
             }
 
             const checkedBoxes = document.querySelectorAll(".product-checkbox:checked");
-            console.log("Productos seleccionados:", checkedBoxes.length);
 
             if (checkedBoxes.length === 0) {
                 alert("No hay productos seleccionados");
@@ -162,7 +298,6 @@ document.addEventListener("DOMContentLoaded", () => {
             checkedBoxes.forEach((box, index) => {
                 const li = box.closest("li");
                 const product = JSON.parse(li.dataset.product);
-                console.log(`Agregando producto ${index}:`, product);
 
                 detalles.push({
                     idProducto: product.idProductoUsuario,
@@ -172,9 +307,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const pedidoData = {
                 idUsuario: usuarioId,
-                idSupermercado: 1, // Default - Makro
-                idMetodoPago: selectedPaymentId, // Usar el método seleccionado
-                detalles: detalles
+                idSupermercado: parseInt(supermarketSelect.value) || 1,
+                idMetodoPago: selectedPaymentValue === "EFECTIVO" ? null : parseInt(selectedPaymentValue),
+                detalles: detalles,
+                notas: selectedPaymentValue === "EFECTIVO" ? "Pago en Efectivo" : null
             };
 
             console.log("Datos del pedido a enviar:", pedidoData);
@@ -185,68 +321,22 @@ document.addEventListener("DOMContentLoaded", () => {
                 body: JSON.stringify(pedidoData)
             })
                 .then(res => {
-                    console.log("Respuesta del servidor:", res.status);
-                    console.log("Content-Type:", res.headers.get("content-type"));
-
-                    // Si no es 200, intentar leer el error
                     if (!res.ok) {
-                        // Intentar leer como texto primero
                         return res.text().then(text => {
-                            console.log("Respuesta del servidor (texto):", text);
-
-                            // Intentar parsear como JSON
                             try {
                                 const json = JSON.parse(text);
                                 throw new Error(json.message || `Error HTTP ${res.status}`);
                             } catch (e) {
-                                // Si no es JSON, es probablemente HTML de error
-                                throw new Error(`Error del servidor (${res.status}). Revisa la consola de IntelliJ para más detalles.`);
+                                throw new Error(`Error del servidor (${res.status}).`);
                             }
                         });
                     }
-
                     return res.json();
                 })
                 .then(pedido => {
                     console.log("Pedido creado:", pedido);
+                    alert(`¡Pedido creado exitosamente! Total: $${pedido.total}`);
 
-                    // Actualizar el modal con los precios reales del backend
-                    summaryBody.innerHTML = "";
-                    let totalReal = 0;
-
-                    if (pedido.detalles && pedido.detalles.length > 0) {
-                        pedido.detalles.forEach(detalle => {
-                            const row = document.createElement("div");
-                            row.classList.add("order__summary-row");
-
-                            const nombreProd = detalle.productoSupermercado ? detalle.productoSupermercado.nombreProducto : "Producto";
-                            const unidad = detalle.productoSupermercado ? detalle.productoSupermercado.unidadMedida : "unid";
-                            const precio = detalle.precioUnitario || 0;
-                            const subtotal = precio * detalle.cantidad;
-                            totalReal += subtotal;
-
-                            row.innerHTML = `
-                                <span>${escapeHtml(nombreProd)}</span>
-                                <span>${detalle.cantidad}</span>
-                                <span>${escapeHtml(unidad)}</span>
-                                <span>$${precio}</span>
-                            `;
-                            summaryBody.appendChild(row);
-                        });
-                    }
-
-                    // Actualizar proveedor
-                    const supplierNameElement = document.getElementById("supplier-name");
-                    if (supplierNameElement && pedido.supermercado) {
-                        supplierNameElement.textContent = pedido.supermercado.nombreSupermercado;
-                    }
-
-                    // Actualizar total
-                    totalLabel.textContent = `$${pedido.total || totalReal}`;
-
-                    alert(`¡Pedido creado exitosamente! Total: $${pedido.total || totalReal}`);
-
-                    // Desmarcar checkboxes después de un delay
                     setTimeout(() => {
                         closeModal();
                         checkedBoxes.forEach(box => box.checked = false);
@@ -257,7 +347,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     alert("Error al crear el pedido: " + err.message);
                 });
         });
-        console.log("Event listener agregado al botón Confirmar");
     } else {
         console.error("No se encontró el botón confirm");
     }

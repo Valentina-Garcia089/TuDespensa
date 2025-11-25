@@ -28,9 +28,11 @@ public class HistorialNotificacionesService implements Observador {
         System.out.println("🔔 Registrando notificación para el pedido ID: " + pedido.getIdPedido());
         HistorialNotificaciones notificacion = new HistorialNotificaciones();
         notificacion.setUsuario(pedido.getUsuario());
+        notificacion.setTipoNotificacion("PEDIDO_CREADO");
         notificacion.setMensaje("Pedido #" + pedido.getIdPedido() + " creado exitosamente.");
         notificacion.setFechaEnvio(LocalDateTime.now());
         notificacion.setLeido(false);
+        // productoUsuario se deja null para notificaciones de pedidos
         repository.save(notificacion);
     }
 }

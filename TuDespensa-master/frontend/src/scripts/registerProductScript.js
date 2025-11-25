@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!usuarioId) return alert("Usuario no identificado");
 
         const name = document.getElementById("product-name").value.trim();
-        const brand = document.getElementById("porduct-brand").value.trim();
+        const brand = document.getElementById("product-brand").value.trim();
         const quantity = document.getElementById("product-quantity").value.trim();
         const measurement = document.getElementById("product-measurement").value.trim();
         const frequency = document.getElementById("product-frequency").value.trim();
@@ -171,12 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             .catch(err => {
                 console.error(err);
-                if (err.message.includes("integridad de datos") || err.message.includes("usuario")) {
-                    alert("Error: No se pudo identificar al usuario. Por favor inicie sesión nuevamente.");
-                    window.location.href = "logIn.html";
-                } else {
-                    alert("Error al guardar el producto: " + err.message);
-                }
+                alert("Error al guardar el producto: " + err.message);
             });
     });
 
@@ -234,7 +229,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const product = JSON.parse(li.dataset.product);
 
         document.getElementById("product-name").value = product.nombreProducto || "";
-        document.getElementById("porduct-brand").value = product.marca || "";
+        document.getElementById("product-brand").value = product.marca || "";
         document.getElementById("product-quantity").value = product.cantidad || "";
         document.getElementById("product-measurement").value = product.unidadMedida || "";
         document.getElementById("product-frequency").value = product.frecuenciaReposicion || "";

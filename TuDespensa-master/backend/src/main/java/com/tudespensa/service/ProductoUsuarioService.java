@@ -12,6 +12,9 @@ public class ProductoUsuarioService {
     @Autowired
     private ProductoUsuarioRepository repository;
 
+    @Autowired
+    private com.tudespensa.repository.CategoriaProductoRepository categoriaRepository;
+
     public List<ProductoUsuario> listarPorUsuario(Integer idUsuario) {
         return repository.findByUsuarioIdUsuario(idUsuario);
     }
@@ -22,5 +25,9 @@ public class ProductoUsuarioService {
 
     public void eliminarProducto(Integer id) {
         repository.deleteById(id);
+    }
+
+    public java.util.List<com.tudespensa.model.CategoriaProducto> listarCategorias() {
+        return categoriaRepository.findAll();
     }
 }

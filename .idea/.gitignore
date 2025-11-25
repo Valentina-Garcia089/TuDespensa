@@ -1,10 +1,52 @@
-# Default ignored files
-/shelf/
-/workspace.xml
-# Editor-based HTTP Client requests
-/httpRequests/
-# Environment-dependent path to Maven home directory
-/mavenHomeManager.xml
-# Datasource local storage ignored files
-/dataSources/
-/dataSources.local.xml
+# ===================================
+# 1. ARCHIVOS DE COMPILACIÓN (Maven)
+# ===================================
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# ===================================
+# 2. ARCHIVOS DE INTELLIJ IDEA
+# ===================================
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# ===================================
+# 3. OTROS IDEs (Eclipse, VS Code)
+# ===================================
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+.vscode/
+bin/
+
+# ===================================
+# 4. BASE DE DATOS LOCAL (H2 & Logs)
+# ===================================
+# Importante: Esto evita que subas tu DB local
+*.mv.db
+*.trace.db
+/data/
+/database/*.mv.db
+/database/*.trace.db
+
+# ===================================
+# 5. SISTEMA OPERATIVO
+# ===================================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===================================
+# 6. LOGS Y TEMPORALES
+# ===================================
+*.log
+*.tmp

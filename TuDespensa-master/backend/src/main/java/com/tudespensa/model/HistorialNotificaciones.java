@@ -23,7 +23,7 @@ public class HistorialNotificaciones {
     private Usuario usuario;
 
     @ManyToOne
-    @JoinColumn(name = "id_producto_usuario")
+    @JoinColumn(name = "id_producto_usuario", nullable = true)
     private ProductoUsuario productoUsuario;
 
     @Column(name = "fecha_envio")

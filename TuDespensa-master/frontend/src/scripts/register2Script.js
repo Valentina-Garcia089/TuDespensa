@@ -27,7 +27,8 @@ btnCrearCuenta.addEventListener("click", () => {
 
     // Construir objeto usuario completo
     const nuevoUsuario = {
-        nombre: partialUser.nombre + " " + partialUser.apellido, // Concatenamos porque el modelo tiene solo 'nombre'
+        nombre: partialUser.nombre,
+        apellido: partialUser.apellido,
         correo: inputEmail.value,
         contrasenaHash: inputPassword.value, // Se envía tal cual, backend debería hashear pero por ahora guardamos así
         direccion: partialUser.direccion,

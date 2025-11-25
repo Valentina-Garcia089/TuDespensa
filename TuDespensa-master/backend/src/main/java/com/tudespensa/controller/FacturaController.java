@@ -51,7 +51,7 @@ public class FacturaController {
         sb.append("th { background-color: #3498db; color: white; }");
         sb.append("</style></head><body>");
         
-        sb.append("<h1>FACTURA - Ped ido #").append(pedido.getIdPedido()).append("</h1>");
+        sb.append("<h1>FACTURA - Pedido #").append(pedido.getIdPedido()).append("</h1>");
         sb.append("<p><strong>Fecha:</strong> ").append(pedido.getFechaPedido()).append("</p>");
         sb.append("<p><strong>Supermercado:</strong> ").append(pedido.getSupermercado().getNombreSupermercado()).append("</p>");
         sb.append("<p><strong>Cliente:</strong> ").append(pedido.getUsuario().getNombre()).append(" ").append(pedido.getUsuario().getApellido()).append("</p>");

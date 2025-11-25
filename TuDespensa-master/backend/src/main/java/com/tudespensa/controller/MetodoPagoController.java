@@ -22,7 +22,23 @@ public class MetodoPagoController {
 
     @PostMapping
     public MetodoPago crear(@RequestBody MetodoPago metodo) {
-        return service.guardar(metodo);
+        System.out.println("Recibiendo método de pago: " + metodo); // DEBUG
+        
+        if (metodo.getUsuario() == null || metodo.getUsuario().getIdUsuario() == null) {
+            throw new RuntimeException("Error: El usuario es obligatorio para crear un método de pago.");
+        }
+
+        // Verificar si el usuario existe realmente
+        // Esto previene el error de integridad de datos si el ID no existe en la BD
+        // Nota: Idealmente inyectar UsuarioRepository, pero por ahora confiamos en el Service o Repository de MetodoPago
+        // Si falla, será con un mensaje más claro.
+        
+        try {
+            return service.guardar(metodo);
+        } catch (org.springframework.dao.DataIntegrityViolationException e) {
+            throw new RuntimeException("Error de integridad de datos. Posiblemente el usuario con ID " + 
+                metodo.getUsuario().getIdUsuario() + " no existe o hay datos duplicados.");
+        }
     }
 
     @DeleteMapping("/{id}")

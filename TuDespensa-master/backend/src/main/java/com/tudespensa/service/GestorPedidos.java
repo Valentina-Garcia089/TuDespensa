@@ -19,6 +19,9 @@ public class GestorPedidos implements Sujeto {
     private PedidoRepository pedidoRepository;
 
     @Autowired
+    private FacturaService facturaService;
+
+    @Autowired
     private EmailServicio emailServicio;
 
     @Autowired
@@ -54,10 +57,31 @@ public class GestorPedidos implements Sujeto {
 
         // Agregar detalles usando el método del patrón Creator en Pedido
         for (int i = 0; i < productos.size(); i++) {
-            pedido.agregarDetalle(productos.get(i), cantidades.get(i));
+            ProductoSupermercado prod = productos.get(i);
+            if (prod == null) {
+                throw new RuntimeException("Producto es nulo en el índice " + i);
+            }
+            if (prod.getPrecio() == null) {
+                throw new RuntimeException("El producto '" + prod.getNombreProducto() + "' no tiene precio asignado.");
+            }
+            pedido.agregarDetalle(prod, cantidades.get(i));
         }
 
         Pedido pedidoGuardado = pedidoRepository.save(pedido);
+
+        // Generar Factura automáticamente
+        try {
+            Factura factura = new FacturaBuilder()
+                    .buildEncabezado(pedidoGuardado)
+                    .buildCuerpo()
+                    .buildPie()
+                    .getResult();
+            facturaService.guardarFactura(factura);
+            System.out.println("Factura generada exitosamente: " + factura.getNumeroFactura());
+        } catch (Exception e) {
+            System.err.println("Error generando factura: " + e.getMessage());
+            // No lanzamos excepción para no revertir el pedido, pero logueamos el error
+        }
 
         // Notificar a los observadores
         notificarObservadores(pedidoGuardado);

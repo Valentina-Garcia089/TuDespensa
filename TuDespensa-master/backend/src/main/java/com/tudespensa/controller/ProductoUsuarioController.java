@@ -32,4 +32,9 @@ public class ProductoUsuarioController {
     public void eliminar(@PathVariable Integer id) {
         service.eliminarProducto(id);
     }
+
+    @GetMapping("/debug/categorias")
+    public org.springframework.http.ResponseEntity<?> debugCategorias() {
+        return org.springframework.http.ResponseEntity.ok(service.listarCategorias());
+    }
 }
