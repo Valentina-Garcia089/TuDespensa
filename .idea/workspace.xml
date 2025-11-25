@@ -4,31 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0cbf6e67-ac46-43fc-8e87-084033564312" name="Changes" comment="implementación de PostgreSQL">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/TuDespensa-master.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/TuDespensa-master.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/config/ProductoSupermercadoSeeder.java" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/config/ProductoSupermercadoSeeder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/controller/FacturaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/controller/FacturaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/controller/MetodoPagoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/controller/MetodoPagoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/controller/PedidoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/controller/PedidoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/controller/ProductoUsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/controller/ProductoUsuarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/model/HistorialNotificaciones.java" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/model/HistorialNotificaciones.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/model/MetodoPago.java" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/model/MetodoPago.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/service/GestorPedidos.java" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/service/GestorPedidos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/service/HistorialNotificacionesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/service/HistorialNotificacionesService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/service/ProductoUsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/service/ProductoUsuarioService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/service/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/java/com/tudespensa/service/UsuarioService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/backend/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TuDespensa-master/database/tudespensa_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/database/tudespensa_db.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TuDespensa-master/frontend/src/pages/addPaymetMet.html" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/frontend/src/pages/addPaymetMet.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TuDespensa-master/frontend/src/pages/registerProducts.html" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/frontend/src/pages/registerProducts.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TuDespensa-master/frontend/src/scripts/addPaymentScript.js" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/frontend/src/scripts/addPaymentScript.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TuDespensa-master/frontend/src/scripts/orderSumScript.js" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/frontend/src/scripts/orderSumScript.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TuDespensa-master/frontend/src/scripts/register2Script.js" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/frontend/src/scripts/register2Script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TuDespensa-master/frontend/src/scripts/registerProductScript.js" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/frontend/src/scripts/registerProductScript.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TuDespensa-master/frontend/src/styles/regProductStyles.css" beforeDir="false" afterPath="$PROJECT_DIR$/TuDespensa-master/frontend/src/styles/regProductStyles.css" afterDir="false" />
-    </list>
+    <list default="true" id="0cbf6e67-ac46-43fc-8e87-084033564312" name="Changes" comment="aplicativo funcional" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -107,6 +83,11 @@
     ]
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ivanf\Documents\Universidad\FIS\TuDespensa-master\TuDespensa-master\database" />
+    </key>
+  </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="mvn compile" />
@@ -147,7 +128,7 @@
       <workItem from="1764019085289" duration="1777000" />
       <workItem from="1764024822630" duration="6870000" />
       <workItem from="1764034725961" duration="6726000" />
-      <workItem from="1764044962749" duration="1116000" />
+      <workItem from="1764044962749" duration="1557000" />
     </task>
     <task id="LOCAL-00001" summary="Mi versión del proyecto">
       <option name="closed" value="true" />
@@ -181,7 +162,23 @@
       <option name="project" value="LOCAL" />
       <updated>1763954262105</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="solución de errores&#10;implementación de eliminar metodo de pago&#10;nueva pestaña de crear pedido">
+      <option name="closed" value="true" />
+      <created>1764046486699</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1764046486699</updated>
+    </task>
+    <task id="LOCAL-00006" summary="aplicativo funcional">
+      <option name="closed" value="true" />
+      <created>1764046547126</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1764046547126</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,7 +188,9 @@
     <MESSAGE value="Mi versión del proyecto" />
     <MESSAGE value="application.properties con PostgreSQL" />
     <MESSAGE value="implementación de PostgreSQL" />
-    <option name="LAST_COMMIT_MESSAGE" value="implementación de PostgreSQL" />
+    <MESSAGE value="solución de errores&#10;implementación de eliminar metodo de pago&#10;nueva pestaña de crear pedido" />
+    <MESSAGE value="aplicativo funcional" />
+    <option name="LAST_COMMIT_MESSAGE" value="aplicativo funcional" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

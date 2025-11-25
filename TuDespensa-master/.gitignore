@@ -8,6 +8,9 @@ target/
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/
+.idea/workspace.xml
+.idea/dataSources.local.xml
+.idea/dataSources/
 *.iws
 *.iml
 *.ipr
@@ -47,3 +50,12 @@ build/
 !.vscode/*.code-snippets
 
 .fake
+
+### Database Scripts (Temporary/Fix) ###
+**/fix_*.sql
+**/reset_*.sql
+**/analisis_*.sql
+**/verificar_*.sql
+
+### Backend Generated Resources ###
+backend/src/main/resources/static/
