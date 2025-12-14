@@ -224,21 +224,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 loadPaymentMethods(); // Recargar lista
                 currentMethodDisplay.textContent = savedMethod.ultimosDigitos ? `Tarjeta •••• ${savedMethod.ultimosDigitos}` : savedMethod.tipoPago;
                 currentMethodDisplay.style.color = '#212121';
-                // Assuming hiddenForm is a form element, reset it
+                
                 const cardInput = document.querySelector("#hidden-method input[type='number']");
                 if (cardInput) {
-                    cardInput.value = ''; // Clear the input field
+                    cardInput.value = ''; 
                 }
                 closeForm();
             })
             .catch(err => {
-                // El error ya se maneja en la función global, pero aquí podemos hacer algo extra si es necesario
                 console.error("Error en listener:", err);
             });
     });
 });
 
-// Función global expuesta (se mantiene igual)
+
 window.guardarNuevoMetodoPago = function (usuarioId, cardNumber) {
     console.log("Ejecutando guardarNuevoMetodoPago...", { usuarioId, cardNumber });
 
@@ -274,10 +273,10 @@ window.guardarNuevoMetodoPago = function (usuarioId, cardNumber) {
         })
         .catch(err => {
             console.error(err);
-            // Mostrar el error real para depurar
+            // mostrar el error real
             alert("Error al guardar: " + err.message);
             if (err.message.includes("integridad de datos") || err.message.includes("usuario")) {
-                // Opcional: redirigir si es crítico, pero primero mostrar el error
+                
             }
             throw err;
         });
