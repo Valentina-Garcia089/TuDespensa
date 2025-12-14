@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const confirmBtn = document.querySelector(".confirm");
     const summaryBody = document.getElementById("order-summary-body");
 
-    // Nuevos elementos
+
     const subtotalLabel = document.getElementById("order-subtotal");
     const ivaLabel = document.getElementById("order-iva");
     const totalLabel = document.getElementById("order-total");
@@ -30,14 +30,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const supermarketPhone = document.getElementById("supermarket-phone");
     const supplierName = document.getElementById("supplier-name");
 
-    // Datos de supermercados (simulados por ahora)
+    // Datos de supermercados
     const supermarkets = {
         "1": { name: "Éxito", phone: "3001234567" },
         "2": { name: "Carulla", phone: "3109876543" },
         "3": { name: "Jumbo", phone: "6012345678" }
     };
 
-    // Función para actualizar precios según supermercado
+    //función para actualizar precios según supermercado
     async function updatePricesForSupermarket(supermercadoId) {
         const checkedBoxes = document.querySelectorAll(".product-checkbox:checked");
         if (checkedBoxes.length === 0) return;
@@ -49,15 +49,15 @@ document.addEventListener("DOMContentLoaded", () => {
             const product = JSON.parse(li.dataset.product);
 
             try {
-                // Buscar el producto en el supermercado seleccionado
+                //Buscar el producto en el supermercado seleccionado
                 const response = await fetch(`http://localhost:8080/productos-supermercado/buscar?supermercado_id=${supermercadoId}&nombre=${encodeURIComponent(product.nombreProducto)}&marca=`);
 
                 if (response.ok) {
                     const productosSupermercado = await response.json();
                     if (productosSupermercado.length > 0) {
-                        // Actualizar el precio en el objeto del producto
+                        // actualizar el precio en el objeto del producto
                         product.precio = productosSupermercado[0].precio;
-                        // Actualizar el dataset
+                        //actualizar el dataset
                         li.dataset.product = JSON.stringify(product);
                         console.log(`Precio actualizado para ${product.nombreProducto}: $${product.precio}`);
                     }
@@ -78,7 +78,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const checkedBoxes = document.querySelectorAll(".product-checkbox:checked");
         const productsList = [];
 
-        // Limpiar el cuerpo del resumen
         summaryBody.innerHTML = "";
 
         checkedBoxes.forEach((box) => {
