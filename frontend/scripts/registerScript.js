@@ -1,4 +1,4 @@
-// Redireccionamiento del registro 1 al 2
+//Redireccionamiento del registro 1 al 2
 const btnCancelar = document.getElementById("register__buttons-cancel");
 btnCancelar.addEventListener("click", () => {
     window.location.href = "landing.html";

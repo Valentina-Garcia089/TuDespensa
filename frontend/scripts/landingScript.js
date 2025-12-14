@@ -14,10 +14,10 @@ profileButton.addEventListener("click", () =>{
 // Redireccionamiento a la página de registro
 const btnRegistro = document.getElementById("header__start-button");
 btnRegistro.addEventListener("click", () => {
-    window.location.href = "register.html";
+    window.location.href = "pages/register.html";
 })
 
 const btnRegistro2 = document.getElementById("benefits__start-button");
 btnRegistro2.addEventListener("click", () => {
-    window.location.href = "register.html";
+    window.location.href = "pages/register.html";
 })
