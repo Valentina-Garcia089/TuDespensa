@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     });
 
-    // BORRAR ELEMENTOS SELECCIONADOS:
+    //BORRRAR ELEMENTOS SELECCIONADOS:
     const deleteBtn = document.querySelector(".list__delete-button");
 
     function updateDeleteButtonVisibility() {
@@ -213,7 +213,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     });
 
-    //Editar productos:
+    //Editar productos
     const editBtn = document.querySelector(".list__edit-button");
 
     function updateEditButtonVisibility() {
