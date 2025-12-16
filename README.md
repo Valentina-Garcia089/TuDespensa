@@ -76,7 +76,7 @@ Debido al uso de datos quemados, el acceso se realiza con usuarios predefinidos:
     contrasena: "admin",
     rol: "admin"
 }
-
+```
 ---
 
 ## Estado del proyecto
